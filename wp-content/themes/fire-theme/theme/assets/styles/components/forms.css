@@ -1,9 +1,0 @@
-@layer components {
-  .form-required {
-    &::after {
-      @apply ml-1;
-      @apply text-red-400;
-      content: '*';
-    }
-  }
-}
