@@ -33,11 +33,10 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
-    "alpinejs": "^3.7.1",
+    "alpinejs": "^3.8.1",
     "balance-text": "^3.3.0",
     "core-js": "^3.9.1",
-    "intersection-observer": "^0.12.0",
-    "jquery": "^3.6.0",
-    "lodash": "^4.17.21"
+    "cssnano": "^5.0.15",
+    "esbuild-loader": "^2.18.0"
   }
 }

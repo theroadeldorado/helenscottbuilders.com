@@ -9,26 +9,30 @@
   }
 
   .button {
-    @apply px-4 py-2 inline-block;
+    @apply px-4 py-3 inline-block;
     @apply rounded;
-    @apply text-14 text-white font-bold no-underline;
+    @apply text-xs font-semibold leading-none no-underline;
     @apply transition-all duration-200 cursor-pointer;
+    @apply ring-offset-2 ring-red-600 ring-offset-white;
 
     &:focus {
       outline: none;
     }
 
     &-primary {
-      @apply bg-gray-500;
+      @apply text-white bg-red-600 hover:bg-red-700 focus:ring-2;
+    }
 
-      &:hover,
-      &:active {
-        @apply bg-gray-700;
-      }
+    &-outline {
+      @apply text-black border border-black hover:text-black hover:border-black focus:ring-2 ring-black;
+    }
 
-      &:focus {
-        box-shadow: 0px 0px 0px 2px theme(colors.gray.700);
-      }
+    &-primary-white {
+      @apply text-red-600 bg-white hover:bg-white focus:ring-2 ring-white;
+    }
+
+    &-outline-white {
+      @apply text-white border border-white focus:ring-2;
     }
   }
 }

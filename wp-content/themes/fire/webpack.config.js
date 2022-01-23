@@ -30,10 +30,9 @@ const scriptLoaders = [
   {
     test: /\.m?js$/,
     use: {
-      loader: 'babel-loader',
+      loader: 'esbuild-loader',
       options: {
-        presets: [['@babel/preset-env', { shippedProposals: true }]],
-        plugins: [['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }]],
+        target: 'es2017',
       },
     },
   },
@@ -56,6 +55,9 @@ module.exports = {
   output: { path: FireConfig.DESTINATION_PATH },
   module: { rules: [...scriptLoaders, ...styleLoaders, ...fontLoaders] },
   resolve: { alias: aliases },
+  stats: {
+    children: true,
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',

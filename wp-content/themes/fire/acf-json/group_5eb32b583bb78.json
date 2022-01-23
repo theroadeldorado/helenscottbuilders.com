@@ -132,8 +132,8 @@
             ]
         },
         {
-            "key": "field_5efe2db0341c7",
-            "label": "Bugherd",
+            "key": "field_61e34f8e4259b",
+            "label": "Header",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -148,42 +148,34 @@
             "endpoint": 0
         },
         {
-            "key": "field_5efe2ddb341c9",
-            "label": "Bugherd Enabled",
-            "name": "bugherd_enabled",
-            "type": "true_false",
+            "key": "field_61e34f9fa25ca",
+            "label": "Client Login Button",
+            "name": "client_login_button",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "15",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "message": "Enable Bugherd for all site visitors?",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "return_format": "array"
         },
         {
-            "key": "field_5efe2dba341c8",
-            "label": "Bugherd API Key",
-            "name": "bugherd_api_key",
-            "type": "text",
+            "key": "field_61e34fb7a25cb",
+            "label": "Contact Us Button",
+            "name": "contact_us_button",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "85",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "return_format": "array"
         }
     ],
     "location": [
@@ -201,7 +193,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1593720890
+    "show_in_rest": 0,
+    "modified": 1642287124
 }

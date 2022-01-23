@@ -40,19 +40,45 @@
         'title' => 'Font Style Presets',
         'items' => array(
           array(
-            'title' => 'Example Preset',
+            'title' => 'Heading-1',
             'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
-            'classes' => 'test'
+            'classes' => 'heading-1'
+          ),
+          array(
+            'title' => 'Heading-2',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'heading-2'
+          ),
+          array(
+            'title' => 'Heading-3',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'heading-3'
+          ),
+          array(
+            'title' => 'Paragraph Large',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'text-lg'
+          ),
+          array(
+            'title' => 'Paragraph Small',
+            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
+            'classes' => 'text-sm'
           ),
         ),
       ),
       array(
-        'title' => 'Font Family',
+        'title' => 'Button Styles',
         'items' => array(
           array(
-            'title' => 'Open Sans',
-            'selector' => 'p, a, h1, h2, h3, h4, h5, h6, li, span',
-            'classes' => 'font-body'
+            'title' => 'Primary',
+            'selector' => 'a',
+            'classes' => 'button button-primary'
+          ),
+
+          array(
+            'title' => 'Outline',
+            'selector' => 'a',
+            'classes' => 'button button-outline'
           ),
         ),
       ),

@@ -15,26 +15,14 @@
   }
 
   .heading-1 {
-    @apply text-28;
+    @apply text-3xl font-bold md:text-4xl;
   }
 
   .heading-2 {
-    @apply text-26;
+    @apply text-2xl font-bold md:text-3xl;
   }
 
   .heading-3 {
-    @apply text-24;
-  }
-
-  .heading-4 {
-    @apply text-20;
-  }
-
-  .heading-5 {
-    @apply text-18;
-  }
-
-  .heading-6 {
-    @apply text-16;
+    @apply text-xl font-bold md:text-2xl;
   }
 }

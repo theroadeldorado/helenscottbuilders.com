@@ -19,15 +19,6 @@
 	</footer>
 </div><!-- #page -->
 
-<?php
-  $bugherd_api_key = get_field('bugherd_api_key', 'site_settings');
-  $bugherd_enabled = get_field('bugherd_enabled', 'site_settings');
-
-  if ($bugherd_api_key && $bugherd_enabled) :
-?>
-  <script src="https://www.bugherd.com/sidebarv2.js?apikey=<?php print $bugherd_api_key; ?>" async="true"></script>
-<?php endif; ?>
-
 <?php wp_footer(); ?>
 
 </body>

@@ -29,9 +29,9 @@
   }
   add_filter('nav_menu_css_class', 'fire_add_menu_list_item_class', 10, 4);
 
-    /**
+  /**
    * Allows adding custom class to nav list links
-   */
+  */
   function fire_add_menu_link_class( $atts, $item, $args, $depth ) {
     if (property_exists($args, 'link_class')) {
       $atts['class'] = $args->link_class;

@@ -47,6 +47,8 @@ class Fire_SVG {
 			'path'  => array(
 				'd'            => true,
 				'fill'         => true,
+				'class'        => true,
+				'x-bind:class'       => true,
 				'fill-rule'    => true,
 				'clip-rule'    => true,
 				'stroke'       => true,
