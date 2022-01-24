@@ -5,13 +5,22 @@
   $copy = get_sub_field('copy');
 
   $section->add_classes([
-    ''
+    'relative'
   ]);
 ?>
 
 <?php $section->start(); ?>
-
-  <img src="<?php print aq_resize($image['url'], 1920, 600, true); ?>" alt="<?php echo $image_alt; ?>">
-  <?php print $copy; ?>
+  <div class="absolute inset-0 z-0">
+    <img class="object-cover w-full h-full" src="<?php print aq_resize($image['url'], 1920, 600, true); ?>" alt="<?php echo $image_alt; ?>">
+  </div>
+  <div class="relative bg-black z-1 bg-opacity-30">
+    <div class="container px-4 mx-auto">
+      <div class="py-40 text-center">
+        <div class="max-w-lg mx-auto mb-8 text-white wizzy">
+          <?php print $copy; ?>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <?php $section->end(); ?>

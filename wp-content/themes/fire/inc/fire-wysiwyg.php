@@ -70,15 +70,27 @@
         'title' => 'Button Styles',
         'items' => array(
           array(
-            'title' => 'Primary',
+            'title' => 'Primary Red',
             'selector' => 'a',
             'classes' => 'button button-primary'
           ),
 
           array(
-            'title' => 'Outline',
+            'title' => 'Outline Black',
             'selector' => 'a',
             'classes' => 'button button-outline'
+          ),
+
+          array(
+            'title' => 'Primary White',
+            'selector' => 'a',
+            'classes' => 'button button-primary button-white'
+          ),
+
+          array(
+            'title' => 'Outline White',
+            'selector' => 'a',
+            'classes' => 'button button-outline button-white'
           ),
         ),
       ),

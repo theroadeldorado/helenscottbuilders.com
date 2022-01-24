@@ -1,4 +1,10 @@
 /* base */
+.wizzy p, .wizzy ul, .wizzy ol {
+  margin-bottom: 1.5rem;
+}
+.wizzy p:last-child, .wizzy ul:last-child, .wizzy ol:last-child {
+  margin-bottom: 0px;
+}
 /* components */
 /* libs */
 /* ! tailwindcss v3.0.7 | MIT License | https://tailwindcss.com */
@@ -656,8 +662,17 @@ a:focus-visible {
 .fixed {
   position: fixed;
 }
+.absolute {
+  position: absolute;
+}
 .relative {
   position: relative;
+}
+.inset-0 {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
 .top-0 {
   top: 0px;
@@ -670,6 +685,9 @@ a:focus-visible {
 }
 .z-\[1\] {
   z-index: 1;
+}
+.z-0 {
+  z-index: 0;
 }
 .mx-auto {
   margin-left: auto;
@@ -704,6 +722,9 @@ a:focus-visible {
 .mr-3 {
   margin-right: 0.75rem;
 }
+.mb-8 {
+  margin-bottom: 2rem;
+}
 .block {
   display: block;
 }
@@ -728,6 +749,9 @@ a:focus-visible {
 .h-20 {
   height: 5rem;
 }
+.h-full {
+  height: 100%;
+}
 .w-40 {
   width: 10rem;
 }
@@ -748,6 +772,9 @@ a:focus-visible {
 }
 .w-5 {
   width: 1.25rem;
+}
+.max-w-lg {
+  max-width: 32rem;
 }
 .flex-grow {
   flex-grow: 1;
@@ -845,6 +872,13 @@ a:focus-visible {
   --tw-bg-opacity: 1;
   background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
 }
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+}
+.bg-opacity-30 {
+  --tw-bg-opacity: 0.3;
+}
 .fill-current {
   fill: currentColor;
 }
@@ -853,6 +887,10 @@ a:focus-visible {
 }
 .fill-white {
   fill: #fff;
+}
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .px-4 {
   padding-left: 1rem;
@@ -870,11 +908,12 @@ a:focus-visible {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.py-40 {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
 .text-center {
   text-align: center;
-}
-.font-body {
-  font-family: Inter, sans-serif;
 }
 .text-\[28px\] {
   font-size: 28px;

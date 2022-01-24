@@ -26,3 +26,11 @@
     @apply text-xl font-bold md:text-2xl;
   }
 }
+
+.wizzy {
+  p,
+  ul,
+  ol {
+    @apply mb-6 last:mb-0;
+  }
+}
