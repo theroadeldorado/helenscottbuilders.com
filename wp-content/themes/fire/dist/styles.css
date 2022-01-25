@@ -707,6 +707,15 @@ a:focus-visible {
 .z-0 {
   z-index: 0;
 }
+.order-last {
+  order: 9999;
+}
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.row-span-2 {
+  grid-row: span 2 / span 2;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -718,6 +727,10 @@ a:focus-visible {
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+.-mx-3 {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
 }
 .mt-8 {
   margin-top: 2rem;
@@ -743,8 +756,23 @@ a:focus-visible {
 .mb-8 {
   margin-bottom: 2rem;
 }
+.mb-12 {
+  margin-bottom: 3rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .block {
   display: block;
+}
+.inline-block {
+  display: inline-block;
 }
 .inline {
   display: inline;
@@ -752,8 +780,14 @@ a:focus-visible {
 .flex {
   display: flex;
 }
+.grid {
+  display: grid;
+}
 .hidden {
   display: none;
+}
+.aspect-square {
+  aspect-ratio: 1 / 1;
 }
 .h-auto {
   height: auto;
@@ -769,6 +803,9 @@ a:focus-visible {
 }
 .h-full {
   height: 100%;
+}
+.h-64 {
+  height: 16rem;
 }
 .w-40 {
   width: 10rem;
@@ -807,6 +844,12 @@ a:focus-visible {
 .resize {
   resize: both;
 }
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 .flex-col {
   flex-direction: column;
 }
@@ -825,6 +868,12 @@ a:focus-visible {
 .justify-between {
   justify-content: space-between;
 }
+.gap-4 {
+  gap: 1rem;
+}
+.gap-6 {
+  gap: 1.5rem;
+}
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -842,6 +891,12 @@ a:focus-visible {
 }
 .overflow-y-scroll {
   overflow-y: scroll;
+}
+.rounded {
+  border-radius: 0.25rem;
+}
+.rounded-lg {
+  border-radius: 0.5rem;
 }
 .border-black {
   --tw-border-opacity: 1;
@@ -894,6 +949,10 @@ a:focus-visible {
   --tw-bg-opacity: 1;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
 }
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(220, 38, 38, var(--tw-bg-opacity));
+}
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
@@ -930,11 +989,31 @@ a:focus-visible {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .pt-16 {
   padding-top: 4rem;
 }
 .pb-14 {
   padding-bottom: 3.5rem;
+}
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+.pr-3 {
+  padding-right: 0.75rem;
+}
+.pl-3 {
+  padding-left: 0.75rem;
+}
+.pt-3 {
+  padding-top: 0.75rem;
 }
 .text-center {
   text-align: center;
@@ -954,8 +1033,21 @@ a:focus-visible {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
 .font-medium {
   font-weight: 500;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.leading-none {
+  line-height: 1;
 }
 .text-white {
   --tw-text-opacity: 1;
@@ -968,6 +1060,10 @@ a:focus-visible {
 .text-black {
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
 .no-underline {
   -webkit-text-decoration-line: none;
@@ -987,6 +1083,10 @@ a:focus-visible {
 }
 .duration-200 {
   transition-duration: 200ms;
+}
+.hover\:bg-red-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
 }
 .hover\:text-red-600:hover {
   --tw-text-opacity: 1;
@@ -1011,8 +1111,31 @@ a:focus-visible {
   .md\:block {
     display: block;
   }
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 @media (min-width: 992px) {
+  .lg\:order-first {
+    order: -9999;
+  }
+  .lg\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+  .lg\:row-span-2 {
+    grid-row: span 2 / span 2;
+  }
+  .lg\:mb-0 {
+    margin-bottom: 0px;
+  }
+  .lg\:mt-0 {
+    margin-top: 0px;
+  }
   .lg\:block {
     display: block;
   }
@@ -1024,6 +1147,12 @@ a:focus-visible {
   }
   .lg\:w-auto {
     width: auto;
+  }
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .lg\:items-center {
     align-items: center;
