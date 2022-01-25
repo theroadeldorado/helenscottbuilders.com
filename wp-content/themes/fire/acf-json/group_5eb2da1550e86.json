@@ -18,12 +18,43 @@
             "layouts": {
                 "layout_5eb2daeeb6582": {
                     "key": "layout_5eb2daeeb6582",
+                    "name": "featured_projects",
+                    "label": "Featured Projects",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5eb2daf673d3a",
+                            "label": "Featured Projects",
+                            "name": "featured_projects",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61ef4ea5d860e"
+                            ],
+                            "display": "seamless",
+                            "layout": "",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_61ef4fa78eb4f": {
+                    "key": "layout_61ef4fa78eb4f",
                     "name": "hero",
                     "label": "Hero",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_5eb2daf673d3a",
+                            "key": "field_61ef4fa78eb50",
                             "label": "Hero",
                             "name": "hero",
                             "type": "clone",
@@ -68,7 +99,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1588780605
+    "show_in_rest": 0,
+    "modified": 1643073483
 }
