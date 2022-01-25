@@ -27,10 +27,23 @@
   }
 }
 
-.wizzy {
+.wizzy,
+.prose {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   p,
   ul,
   ol {
     @apply mb-6 last:mb-0;
+  }
+}
+
+.prose {
+  .button-outline-white {
+    @apply bg-gray-300;
   }
 }

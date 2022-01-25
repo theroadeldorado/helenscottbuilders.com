@@ -22,4 +22,13 @@
   [x-cloak] {
     display: none;
   }
+
+  .home {
+    .section--hero.section--1 {
+      @apply mt-[-105px];
+      .hero__content {
+        @apply pt-[168px] lg:pt-[264px];
+      }
+    }
+  }
 }

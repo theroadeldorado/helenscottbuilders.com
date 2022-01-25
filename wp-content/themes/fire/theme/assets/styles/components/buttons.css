@@ -9,9 +9,9 @@
   }
 
   .button {
-    @apply px-4 py-3 inline-block;
-    @apply rounded;
-    @apply text-xs font-semibold leading-none no-underline;
+    @apply px-5 py-4 inline-block;
+    @apply rounded-lg;
+    @apply text-[16px] font-semibold leading-none no-underline;
     @apply transition-all duration-200 cursor-pointer;
     @apply ring-offset-2 ring-red-600 ring-offset-white;
 
@@ -27,7 +27,7 @@
       @apply text-black border border-black hover:text-black hover:border-black focus:ring-2 ring-black;
     }
 
-    &-primary-white {
+    &-white {
       @apply text-red-600 bg-white hover:bg-white focus:ring-2 ring-white;
     }
 

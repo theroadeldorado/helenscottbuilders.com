@@ -29,7 +29,7 @@
 <div id="page" class="site">
   <a class="sr-only skip-link focus:not-sr-only" href="#primary"><?php esc_html_e( 'Skip to content', 'fire' ); ?></a>
 
-  <header class="bg-white/80" x-cloak x-data="toggleNav()">
+  <header class="bg-white/80 relative z-[1000]" x-cloak x-data="toggleNav()">
     <div class="container px-4 mx-auto">
       <nav class="flex items-center justify-between py-4">
         <a class="block w-40 h-auto relative z-[2]" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -68,7 +68,7 @@
             <?php endif; ?>
 
             <?php if($contact): ?>
-              <a class="button button-primary-white" href="<?php echo $contact['url']; ?>" target="<?php echo $contact['target']?>">
+              <a class="button button-white" href="<?php echo $contact['url']; ?>" target="<?php echo $contact['target']?>">
                 <?php echo $contact['title'] ? $contact['title'] : 'Contact Us'; ?>
               </a>
             <?php endif; ?>

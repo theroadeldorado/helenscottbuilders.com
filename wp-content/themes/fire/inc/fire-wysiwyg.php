@@ -84,13 +84,13 @@
           array(
             'title' => 'Primary White',
             'selector' => 'a',
-            'classes' => 'button button-primary button-white'
+            'classes' => 'button button-white'
           ),
 
           array(
             'title' => 'Outline White',
             'selector' => 'a',
-            'classes' => 'button button-outline button-white'
+            'classes' => 'button button-outline-white'
           ),
         ),
       ),
