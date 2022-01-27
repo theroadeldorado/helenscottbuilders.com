@@ -24,7 +24,7 @@
     }
 
     &-outline {
-      @apply text-black border border-black hover:text-black hover:border-black focus:ring-2 ring-black;
+      @apply text-black border border-black hover:ring-1 ring-offset-0 focus:ring-2 ring-black;
     }
 
     &-white {
@@ -32,7 +32,7 @@
     }
 
     &-outline-white {
-      @apply text-white border border-white focus:ring-2;
+      @apply text-white border border-white ring-white hover:ring-1 ring-offset-0 focus:ring-2;
     }
   }
 }

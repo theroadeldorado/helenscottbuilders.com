@@ -78,6 +78,37 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_61f21b579a538": {
+                    "key": "layout_61f21b579a538",
+                    "name": "project_slider",
+                    "label": "Project Slider",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_61f21b579a539",
+                            "label": "Project Slider",
+                            "name": "project_slider",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61f21a189d502"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_61f2087808ed5": {
                     "key": "layout_61f2087808ed5",
                     "name": "recent_blog_posts",
@@ -195,5 +226,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643253992
+    "modified": 1643256680
 }

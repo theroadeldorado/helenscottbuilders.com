@@ -3,6 +3,25 @@
     "title": "Projects Information",
     "fields": [
         {
+            "key": "field_61f21acae64a0",
+            "label": "Project description (short)",
+            "name": "project_description_short",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_61edfa87e3c5d",
             "label": "Featured Image",
             "name": "featured_image",
@@ -52,6 +71,25 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_61f2193eaff2f",
+            "label": "Virtual Tour",
+            "name": "virtual_tour",
+            "type": "textarea",
+            "instructions": "Drop iframe code in here",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -74,5 +112,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1642986255
+    "modified": 1643256556
 }

@@ -31,7 +31,9 @@
               >
             <p class="mt-6 text-sm text-red-600">
               <?php if($cat[0]->name) :?>
-                <?php echo $cat[0]->name;?>
+                <span class="uppercase">
+                  <?php echo $cat[0]->name;?>
+                </span>
               <?php endif;?>
               <span class="ml-3 text-gray-600">
                 <?php echo get_the_time('M j, Y'); ?>

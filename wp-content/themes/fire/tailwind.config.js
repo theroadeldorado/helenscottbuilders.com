@@ -17,14 +17,6 @@ module.exports = {
     fontFamily: {
       body: ['Inter', 'sans-serif'],
     },
-    fontWeight: {
-      light: '300',
-      normal: '400',
-      medium: '500',
-      semibold: '600',
-      bold: '700',
-      black: '900',
-    },
     extend: {
       spacing: {
         'gap-0': '0',
