@@ -1,7 +1,7 @@
 @layer base {
   html,
   body {
-    @apply font-body text-gray-900 text-16 leading-normal font-normal antialiased;
+    @apply font-body text-gray-900 text-[16px] leading-normal font-normal antialiased;
     text-rendering: optimizeLegibility;
   }
 

@@ -66,38 +66,6 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_5ebb046bee881",
-                    "label": "LinkedIn",
-                    "name": "linkedin",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5ebb0478ee882",
-                    "label": "YouTube",
-                    "name": "youtube",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
                     "key": "field_5ebb044bee87f",
                     "label": "Instagram",
                     "name": "instagram",
@@ -117,6 +85,38 @@
                     "key": "field_5ebb04f9ee883",
                     "label": "Pinterest",
                     "name": "pinterest",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ebb046bee881",
+                    "label": "LinkedIn",
+                    "name": "linkedin",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5ebb0478ee882",
+                    "label": "YouTube",
+                    "name": "youtube",
                     "type": "url",
                     "instructions": "",
                     "required": 0,
@@ -196,5 +196,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1642287124
+    "modified": 1643250064
 }

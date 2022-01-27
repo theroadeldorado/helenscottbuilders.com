@@ -10,7 +10,7 @@
 
   .link {
     @apply inline-flex items-center;
-    @apply font-body text-18 tracking-wide leading-none no-underline;
+    @apply font-body text-[18px] tracking-wide leading-none no-underline;
     @apply transition-all duration-200 cursor-pointer;
 
     svg {

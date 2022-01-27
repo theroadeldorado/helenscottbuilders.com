@@ -77,6 +77,99 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_61f2087808ed5": {
+                    "key": "layout_61f2087808ed5",
+                    "name": "recent_blog_posts",
+                    "label": "Recent Blog Posts",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_61f2087c08ed6",
+                            "label": "Recent Blog Posts",
+                            "name": "recent_blog_posts",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61f20734989ec"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_61f1fdb13c2a8": {
+                    "key": "layout_61f1fdb13c2a8",
+                    "name": "social_media_banner",
+                    "label": "Social Media Banner",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_61f1fdb13c2a9",
+                            "label": "Social Media Banner",
+                            "name": "social_media_banner",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61f1fa70db75c"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_61f210d4f383c": {
+                    "key": "layout_61f210d4f383c",
+                    "name": "testimonial",
+                    "label": "Testimonial",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_61f210d4f383d",
+                            "label": "Testimonial",
+                            "name": "testimonial",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61f20fd8d5d3f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Section",
@@ -102,5 +195,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643073483
+    "modified": 1643253992
 }
