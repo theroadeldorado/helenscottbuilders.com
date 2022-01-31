@@ -1,4 +1,7 @@
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   .site {
     @apply flex flex-col min-h-screen;
 

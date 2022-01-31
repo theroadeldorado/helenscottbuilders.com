@@ -18,8 +18,8 @@
             "default_value": "",
             "placeholder": "",
             "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "rows": 3,
+            "new_lines": "wpautop"
         },
         {
             "key": "field_61edfa87e3c5d",
@@ -112,5 +112,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643256556
+    "modified": 1643493309
 }

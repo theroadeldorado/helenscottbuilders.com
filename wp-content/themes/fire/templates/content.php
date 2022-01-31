@@ -6,58 +6,27 @@
  *
  * @package Fire
  */
-
+  $featured_img_url = get_the_post_thumbnail_url(get_the_ID());
+  $category = get_the_category();
+  $category_id = $category[0]->cat_ID;
+  $category_name = $category[0]->cat_name;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+  <div class="container px-4 py-20 mx-auto">
+    <div class="max-w-2xl mx-auto mb-6 text-center">
+      <h1 class="mt-2 mb-6 text-4xl font-bold md:text-5xl font-heading"><?php the_title();?></h1>
+      <span class="inline-block mb-2 space-x-2 text-sm text-gray-700">
+        <span><?php echo  get_the_date('F j, Y');?></span>
+        <span>|</span>
+        <span class="text-red-600"><?php echo $category_name;?></span>
+      </span>
+    </div>
+    <div class="mb-8">
+      <img class="object-cover mx-auto mb-6 rounded h-80" src="<?php print aq_resize($featured_img_url, 1280, 400, true); ?>" alt="<?php the_title();?>">
+    </div>
+    <div class="max-w-2xl mx-auto wizzy">
+      <?php the_content();?>
+  </div>
 
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php
-				fire_posted_on();
-				fire_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<?php fire_post_thumbnail(); ?>
-
-	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'fire' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
-
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'fire' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php fire_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
