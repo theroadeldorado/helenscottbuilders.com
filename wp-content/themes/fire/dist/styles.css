@@ -789,6 +789,12 @@ a:focus-visible {
 .right-0 {
   right: 0px;
 }
+.top-4 {
+  top: 1rem;
+}
+.left-4 {
+  left: 1rem;
+}
 .z-\[1000\] {
   z-index: 1000;
 }
@@ -991,6 +997,9 @@ a:focus-visible {
 }
 .flex {
   display: flex;
+}
+.inline-flex {
+  display: inline-flex;
 }
 .grid {
   display: grid;
@@ -1290,6 +1299,9 @@ a:focus-visible {
 .rounded-full {
   border-radius: 9999px;
 }
+.rounded-br-lg {
+  border-bottom-right-radius: 0.5rem;
+}
 .border {
   border-width: 1px;
 }
@@ -1368,6 +1380,10 @@ a:focus-visible {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
 }
+.bg-red-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(127, 29, 29, var(--tw-bg-opacity));
+}
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
@@ -1440,6 +1456,18 @@ a:focus-visible {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.px-14 {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .pt-8 {
   padding-top: 2rem;
 }
@@ -1460,6 +1488,9 @@ a:focus-visible {
 }
 .pr-4 {
   padding-right: 1rem;
+}
+.text-left {
+  text-align: left;
 }
 .text-center {
   text-align: center;
@@ -1532,6 +1563,9 @@ a:focus-visible {
 .leading-relaxed {
   line-height: 1.625;
 }
+.leading-6 {
+  line-height: 1.5rem;
+}
 .tracking-tight {
   letter-spacing: -0.025em;
 }
@@ -1585,6 +1619,10 @@ a:focus-visible {
 .text-rose-600 {
   --tw-text-opacity: 1;
   color: rgba(225, 29, 72, var(--tw-text-opacity));
+}
+.text-red-200 {
+  --tw-text-opacity: 1;
+  color: rgba(254, 202, 202, var(--tw-text-opacity));
 }
 .no-underline {
   -webkit-text-decoration-line: none;
@@ -1824,6 +1862,9 @@ a:focus-visible {
   }
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .md\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
   .md\:text-5xl {
     font-size: 3rem;
