@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="w-full px-3 transition-all duration-300 lg:w-2/3" :class="{'opacity-0 translate-x-24': activeSlide !== <?php echo $counter;?>, 'opacity-100': activeSlide === <?php echo $counter;?>}">
-            <div class="overflow-hidden rounded aspect-w-7 aspect-h-5">
+            <div class="overflow-hidden rounded-lg aspect-w-7 aspect-h-5">
               <img class="w-full h-full object-fit" src="<?php print aq_resize($image['url'], 800, 800, true); ?>" alt="<?php echo $image['alt']; ?>">
             </div>
           </div>
