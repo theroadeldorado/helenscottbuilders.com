@@ -37,7 +37,7 @@
             class="w-full px-3 mb-12 md:w-1/2 lg:w-1/4"
             @click="openBio('<?php echo $name;?>', '<?php echo $title;?>', '<?php echo $email;?>', '<?php echo $phone_number;?>', <?php echo htmlspecialchars($bioJson);?>, '<?php echo $image['url'];?>', '<?php echo $image['alt'];?>')"
           >
-            <img class="object-cover object-top w-64 h-64 mx-auto rounded" src="<?php echo $thumbnail['url'];?>" alt="<?php echo $thumbnail['alt'];?>">
+            <img class="object-cover object-top w-64 h-64 mx-auto rounded-lg" src="<?php echo $thumbnail['url'];?>" alt="<?php echo $thumbnail['alt'];?>">
             <p class="mt-6 text-xl"><?php echo $name;?></p>
             <p class="mt-2 mb-4 text-red-600"><?php echo $title;?></p>
           </button type="button">
@@ -52,10 +52,10 @@
     class="fixed inset-0 flex items-center justify-center w-screen h-screen bg-black cursor-pointer bg-opacity-40"
     x-show="openModal"
   >
-    <div class="rounded-lg w-[900px] cursor-default p-4 h-[550px] overflow-hidden bg-white border border-gray-400" @click.away="openModal = false">
+    <div class="rounded-xl w-[900px] cursor-default p-4 h-[550px] overflow-hidden bg-white border border-gray-400" @click.away="openModal = false">
       <div class="flex h-full space-x-4">
         <div class="w-2/5 h-full shrink-0">
-          <img class="object-cover w-full h-full rounded" :src="image" :alt="imageAlt">
+          <img class="object-cover w-full h-full rounded-lg" :src="image" :alt="imageAlt">
         </div>
         <div class="w-full overflow-y-scroll">
           <h3 class="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl" x-text="name"></h3>

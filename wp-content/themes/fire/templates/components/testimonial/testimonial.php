@@ -16,8 +16,8 @@
   <div class="container px-4 mx-auto">
     <div class="flex flex-wrap mb-24">
       <div class="relative w-full mb-20 pb-[37%] lg:w-1/2 lg:mb-0">
-        <div class="absolute top-0 right-0 w-full h-full mt-6 -mr-6 bg-gray-900 bg-opacity-5 rounded-xl"></div>
-        <img class="absolute top-0 right-0 object-cover w-full h-full rounded-xl" src="<?php print aq_resize($image['url'], 900, 900, true); ?>" alt="<?php echo $image_alt; ?>">
+        <div class="absolute top-0 right-0 w-full h-full mt-6 -mr-6 bg-gray-900 rounded-lg bg-opacity-5"></div>
+        <img class="absolute top-0 right-0 object-cover w-full h-full rounded-lg" src="<?php print aq_resize($image['url'], 900, 900, true); ?>" alt="<?php echo $image_alt; ?>">
       </div>
       <div class="w-full my-auto lg:w-1/2 lg:pl-24">
         <span><?php new Fire_SVG('quote'); ?></span>

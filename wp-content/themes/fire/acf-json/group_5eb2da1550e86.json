@@ -16,6 +16,37 @@
                 "id": ""
             },
             "layouts": {
+                "layout_61f8a204fe58f": {
+                    "key": "layout_61f8a204fe58f",
+                    "name": "all_blog_posts",
+                    "label": "All Blog Posts",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_61f8a204fe590",
+                            "label": "All Blog Posts",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61f8a19a644fc"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_61f886e8a8480": {
                     "key": "layout_61f886e8a8480",
                     "name": "copy_with_image",
@@ -71,6 +102,37 @@
                             ],
                             "display": "seamless",
                             "layout": "",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_61f8aa5cd99b6": {
+                    "key": "layout_61f8aa5cd99b6",
+                    "name": "features",
+                    "label": "Features",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_61f8aa7dd99b7",
+                            "label": "Features",
+                            "name": "features",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61f8a950bc7cb"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
                             "prefix_label": 0,
                             "prefix_name": 0
                         }
@@ -288,5 +350,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643677457
+    "modified": 1643686589
 }

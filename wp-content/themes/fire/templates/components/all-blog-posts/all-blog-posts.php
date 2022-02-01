@@ -1,6 +1,4 @@
 <?php
-  $title = get_sub_field('title');
-
   $section->add_classes([
     ''
   ]);
@@ -9,13 +7,11 @@
 <?php $section->start(); ?>
 
   <div class="container px-4 mx-auto">
-    <?php if($title):?>
-      <h2 class="mb-8 text-3xl font-bold lg:text-4xl font-heading"><?php echo $title;?></h2>
-    <?php endif;?>
     <div class="flex flex-wrap -mx-3">
 
       <?php
-      $args = array('post_type' => 'post', 'posts_per_page' => '3');
+      $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+      $args = array('post_type' => 'post', 'posts_per_page' => '6', 'paged' => $paged );
       query_posts($args); ?>
       <?php while ( have_posts() ) : the_post();
         $cat = get_the_category();
@@ -43,11 +39,15 @@
             <p class="text-lg leading-loose text-gray-600 line-clamp-2"><?php the_excerpt();?></p>
           </a>
         </div>
-      <?php endwhile;
+      <?php endwhile; ?>
+      <div class="flex items-center justify-between w-full blog-pagination">
+        <div class="grow"><?php next_posts_link( 'Older posts' ); ?></div>
+        <div class="text-right grow"><?php previous_posts_link( 'Newer posts' ); ?></div>
+      </div>
+      <?php
       wp_reset_query();
       ?>
     </div>
-    <div class="text-center"><a class="button button-primary" href="/blog">Show all posts</a></div>
   </div>
 
 <?php $section->end(); ?>

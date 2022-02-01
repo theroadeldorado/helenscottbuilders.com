@@ -8,8 +8,12 @@
     }
   }
 
+  .blog-pagination a {
+    @apply button button-primary;
+  }
+
   .button {
-    @apply px-5 py-4 inline-block;
+    @apply px-5 py-4 inline-flex items-center;
     @apply rounded-lg;
     @apply text-[16px] font-semibold leading-none no-underline;
     @apply transition-all duration-200 cursor-pointer;
