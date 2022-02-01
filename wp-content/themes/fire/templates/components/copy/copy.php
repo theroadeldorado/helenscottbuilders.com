@@ -7,10 +7,8 @@
 
 <?php $section->start(); ?>
   <div class="container px-4 mx-auto">
-    <div class="py-10 pt-16 text-center lg:py-20">
-      <div class="max-w-lg mx-auto text-white wizzy">
-        <?php print $copy; ?>
-      </div>
+    <div class="max-w-4xl mx-auto text-white wizzy">
+      <?php print $copy; ?>
     </div>
   </div>
 <?php $section->end(); ?>
