@@ -4,7 +4,7 @@
   $projects = get_sub_field('projects');
 
   $section->add_classes([
-    'py-12 md:py-20'
+    ''
   ]);
   $counter =0;
 ?>

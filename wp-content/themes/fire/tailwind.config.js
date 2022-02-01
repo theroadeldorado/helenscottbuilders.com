@@ -2,6 +2,12 @@
 
 module.exports = {
   content: ['./templates/**/*.php', './templates/**/*.js', './theme/assets/**/*.js', './theme/main.js', './*.php', './inc/**/*.php', './theme/assets/**/*.svg'],
+  safelist: [
+    {
+      pattern: /(mt|mb)-gap-(0|xs|sm|md|lg|xl)/,
+      variants: ['lg', 'md'],
+    },
+  ],
   important: false,
   theme: {
     screens: {
@@ -21,10 +27,10 @@ module.exports = {
       spacing: {
         'gap-0': '0',
         'gap-xs': '1.25rem',
-        'gap-sm': '2rem',
-        'gap-md': '3rem',
-        'gap-lg': '5rem',
-        'gap-xl': '8rem',
+        'gap-sm': '4rem',
+        'gap-md': '6rem',
+        'gap-lg': '8rem',
+        'gap-xl': '10rem',
       },
     },
   },

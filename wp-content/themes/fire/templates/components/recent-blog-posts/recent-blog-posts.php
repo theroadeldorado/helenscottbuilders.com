@@ -2,7 +2,7 @@
   $title = get_sub_field('title');
 
   $section->add_classes([
-    'py-20'
+    ''
   ]);
 ?>
 

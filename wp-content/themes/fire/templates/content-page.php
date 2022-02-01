@@ -10,6 +10,11 @@
   $post_type = get_post_type();
   $layout_type = get_row_layout();
 ?>
+  <?php if(!is_front_page() && $block_count === 1 && $layout_type !== 'hero'):?>
+    <div class="container text-center">
+      <h1 class="my-8 text-4xl font-medium text-red-600 lg:my-10 lg:text-6xl"><?php the_title();?></h1>
+    </div>
+  <?php endif;?>
 
   <?php $fire_section = new Fire_Section($block_count, $layout_type); ?>
   <?php ACF_Layout::render(get_row_layout(), $block_count, $fire_section); $block_count++; ?>

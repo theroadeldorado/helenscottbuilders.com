@@ -8,7 +8,7 @@
   $project = $quote_content['project'];
 
   $section->add_classes([
-    'py-20 pb-8 mb-20 overflow-x-hidden bg-gray-100'
+    'py-20 pb-8 overflow-x-hidden bg-gray-100'
   ]);
 ?>
 

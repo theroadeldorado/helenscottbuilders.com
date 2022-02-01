@@ -3,7 +3,7 @@
   $subtitle = get_sub_field('subtitle');
 
   $section->add_classes([
-    'py-20'
+    ''
   ]);
 ?>
 
@@ -52,7 +52,7 @@
     class="fixed inset-0 flex items-center justify-center w-screen h-screen bg-black cursor-pointer bg-opacity-40"
     x-show="openModal"
   >
-    <div class="rounded-lg w-[900px] cursor-default p-4 h-[600px] overflow-hidden bg-white border border-gray-400" @click.away="openModal = false">
+    <div class="rounded-lg w-[900px] cursor-default p-4 h-[550px] overflow-hidden bg-white border border-gray-400" @click.away="openModal = false">
       <div class="flex h-full space-x-4">
         <div class="w-2/5 h-full shrink-0">
           <img class="object-cover w-full h-full rounded" :src="image" :alt="imageAlt">
@@ -65,7 +65,7 @@
             <span x-show="email && phone">|</span>
             <a :href="'tel:' + phone" class="text-sm text-gray-700" x-text="phone"></a>
           </div>
-          <p class="mx-auto mt-4 text-gray-700" x-html="bio"></p>
+          <p class="pr-4 mx-auto mt-4 text-gray-700 wizzy" x-html="bio"></p>
         </div>
       </div>
     </div>

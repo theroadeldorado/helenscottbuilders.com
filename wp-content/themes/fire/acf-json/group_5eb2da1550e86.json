@@ -16,6 +16,37 @@
                 "id": ""
             },
             "layouts": {
+                "layout_61f886e8a8480": {
+                    "key": "layout_61f886e8a8480",
+                    "name": "copy_with_image",
+                    "label": "Copy with Image",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_61f886f2a8481",
+                            "label": "Copy with Image",
+                            "name": "copy_with_image",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61f88610d45f0"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_5eb2daeeb6582": {
                     "key": "layout_5eb2daeeb6582",
                     "name": "featured_projects",
@@ -257,5 +288,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643495970
+    "modified": 1643677457
 }
