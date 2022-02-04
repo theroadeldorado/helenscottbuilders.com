@@ -17,13 +17,10 @@
     @apply rounded-lg;
     @apply text-[16px] font-semibold leading-none no-underline;
     @apply transition-all duration-200 cursor-pointer;
-    @apply ring-offset-2 ring-red-600 ring-offset-white;
+    @apply ring-offset-2 ring-red-600 ring-offset-white focus:outline-none;
 
-    &:focus {
-      outline: none;
-    }
-
-    &-primary {
+    &-primary,
+    &.gform_button {
       @apply text-white bg-red-600 hover:bg-red-700 focus:ring-2;
     }
 
