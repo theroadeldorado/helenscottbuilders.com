@@ -76,8 +76,8 @@
             "key": "field_61f2193eaff2f",
             "label": "Virtual Tour",
             "name": "virtual_tour",
-            "type": "textarea",
-            "instructions": "Drop iframe code in here",
+            "type": "url",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -86,10 +86,7 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "placeholder": ""
         }
     ],
     "location": [
@@ -112,5 +109,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643493309
+    "modified": 1643935033
 }
