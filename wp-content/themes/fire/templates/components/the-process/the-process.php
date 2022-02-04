@@ -3,7 +3,7 @@
 
 
   $section->add_classes([
-    'relative py-10 lg:py-20 bg-red-600'
+    'relative py-10 lg:py-20 bg-gray-800'
   ]);
 ?>
 
@@ -21,7 +21,7 @@
           $copy = get_sub_field('short_description');
           ?>
           <div class="relative flex flex-col items-center justify-center h-full px-6 py-6 overflow-hidden bg-white shadow rounded-xl">
-            <div class="absolute top-0 left-0 inline-flex items-center justify-center w-12 h-12 mb-3 leading-6 text-white bg-red-900 rounded-br-lg">
+            <div class="absolute top-0 left-0 inline-flex items-center justify-center w-12 h-12 mb-3 leading-6 text-white bg-red-600 rounded-br-lg">
               <span class="text-2xl font-bold"><?php echo $counter;?></span>
             </div>
             <?php if($feature_title):?>
