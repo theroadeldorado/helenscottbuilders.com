@@ -22,7 +22,7 @@ const styleLoaders = [
       MiniCssExtractPlugin.loader,
       { loader: 'css-loader', options: { importLoaders: 1 } },
       'postcss-loader',
-    ]
+    ],
   },
 ];
 
@@ -49,15 +49,12 @@ const fontLoaders = [
 module.exports = {
   mode: isProduction === true ? 'production' : 'development',
   entry: {
-    styles: path.resolve(__dirname, `./theme/main.css`),
-    scripts: path.resolve(__dirname, `./theme/main.js`),
+    styles: path.resolve(__dirname, './theme/main.css'),
+    scripts: path.resolve(__dirname, './theme/main.js'),
   },
   output: { path: FireConfig.DESTINATION_PATH },
   module: { rules: [...scriptLoaders, ...styleLoaders, ...fontLoaders] },
   resolve: { alias: aliases },
-  stats: {
-    children: true,
-  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
