@@ -23,7 +23,7 @@
         wp_nav_menu(
           array(
             'depth' => 1,
-            'menu' => 6,
+            'menu' => 3,
             'theme_location'  => 'footer',
             'container'       => 'ul',
             'menu_id'         => 'footer',
