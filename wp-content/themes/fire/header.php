@@ -77,8 +77,6 @@
         <?php
         wp_nav_menu(
           array(
-            'depth' => 1,
-            'menu' => 2,
             'theme_location'  => 'menu-1',
             'container'       => 'ul',
             'menu_id'         => 'primary-menu',
