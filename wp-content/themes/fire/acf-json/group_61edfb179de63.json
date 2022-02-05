@@ -20,7 +20,7 @@
             "add_term": 1,
             "save_terms": 1,
             "load_terms": 1,
-            "return_format": "id",
+            "return_format": "object",
             "multiple": 0,
             "allow_null": 0
         }
@@ -43,5 +43,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1642987035
+    "modified": 1644018038
 }

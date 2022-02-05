@@ -1,9 +1,9 @@
 {
-    "key": "group_61fc6b6c8aab6",
-    "title": "Contact Form",
+    "key": "group_61fd527e5abe7",
+    "title": "Gallery with Filters",
     "fields": [
         {
-            "key": "field_61fc6b7b82599",
+            "key": "field_61fd528ef7fe1",
             "label": "Content",
             "name": "",
             "type": "tab",
@@ -19,11 +19,11 @@
             "endpoint": 0
         },
         {
-            "key": "field_61fc6b818259a",
-            "label": "Copy",
-            "name": "copy",
-            "type": "wysiwyg",
-            "instructions": "The contact form will show up next to the copy.",
+            "key": "field_61fd52dcf7fe5",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -31,14 +31,12 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "message": "This section doesn't require anything.",
+            "new_lines": "wpautop",
+            "esc_html": 0
         },
         {
-            "key": "field_61fc6bbb8259c",
+            "key": "field_61fd52a1f7fe2",
             "label": "Settings",
             "name": "",
             "type": "tab",
@@ -54,9 +52,9 @@
             "endpoint": 0
         },
         {
-            "key": "field_61fc6bc48259d",
-            "label": "Settings",
-            "name": "settings",
+            "key": "field_61fd52b5f7fe3",
+            "label": "Section Settings",
+            "name": "section_settings",
             "type": "clone",
             "instructions": "",
             "required": 0,
@@ -93,5 +91,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643992126
+    "modified": 1643991818
 }

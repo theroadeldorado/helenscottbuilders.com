@@ -202,6 +202,37 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_61fd537724fbf": {
+                    "key": "layout_61fd537724fbf",
+                    "name": "gallery_with_filters",
+                    "label": "Gallery with Filters",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_61fd537724fc0",
+                            "label": "Gallery with Filters",
+                            "name": "gallery_with_filters",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_61fd527e5abe7"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_61ef4fa78eb4f": {
                     "key": "layout_61ef4fa78eb4f",
                     "name": "hero",
@@ -443,5 +474,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1643932718
+    "modified": 1643991953
 }
