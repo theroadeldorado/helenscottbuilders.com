@@ -84,12 +84,12 @@ function Image_Tags() {
 		'labels'                     => $labels,
 		'hierarchical'               => false,
 		'public'                     => true,
-		'show_ui'                    => false,
+		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => false,
 	);
-	register_taxonomy( 'image-tags', array( 'attachments' ), $args );
+	register_taxonomy( 'image-tags', array( 'attachments', 'posts' ), $args );
 
 }
 add_action( 'init', 'Image_Tags', 0 );
