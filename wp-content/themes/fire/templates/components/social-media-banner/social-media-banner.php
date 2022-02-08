@@ -21,18 +21,16 @@
         <div class="flex items-center justify-center space-x-5">
           <?php
             $social_links = get_field('social_links', 'site_settings');
-            if (empty($social_links)) {
-              return;
-            }
-            foreach ($social_links as $platform => $link) {
-              if($link):?>
-                <a class="h-8 w-8 flex items-center justify-center no-underline text-white hover:text-red-300 duration-200 transition-all <?php echo $social_link_classes ? $social_link_classes : '';?>" target="_blank" href="<?php echo $link;?>">
-                  <?php new Fire_SVG('icon--social-' . $platform); ?>
-                  <span class="sr-only"><?php echo $platform; ?></span>
-                </a>
-              <?php
-              endif;
-            }
+            if ($social_links) :
+              foreach ($social_links as $platform => $link) :
+                if($link): ?>
+                  <a class="h-8 w-8 flex items-center justify-center no-underline text-white hover:text-red-300 duration-200 transition-all <?php echo $social_link_classes ? $social_link_classes : '';?>" target="_blank" href="<?php echo $link;?>">
+                    <?php new Fire_SVG('icon--social-' . $platform); ?>
+                    <span class="sr-only"><?php echo $platform; ?></span>
+                  </a>
+                <?php endif;
+              endforeach;
+            endif;
           ?>
         </div>
 

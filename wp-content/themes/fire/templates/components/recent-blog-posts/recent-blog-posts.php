@@ -20,7 +20,7 @@
       <?php while ( have_posts() ) : the_post();
         $cat = get_the_category();
         $post_image_url = wp_get_attachment_url(get_post_thumbnail_id());
-        $post_image_alt = get_post_meta($post_image_id, '_wp_attachment_image_alt', true);
+        $post_image_alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
       ?>
         <div class="w-full px-3 mb-12 lg:w-1/3">
           <a class="no-underline" href="<?php the_permalink();?>">

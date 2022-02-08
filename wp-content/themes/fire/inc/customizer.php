@@ -59,14 +59,3 @@ function fire_customize_preview_js() {
 	wp_enqueue_script( 'fire-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'fire_customize_preview_js' );
-
-/**
- * Switches the location of the styles
- */
-function fire_customize_enqueue_theme_css() {
-    wp_enqueue_style(
-      'default',
-      get_template_directory_uri() . '/dist/styles.css'
-    );
-}
-add_action( 'wp_enqueue_scripts', 'fire_customize_enqueue_theme_css' );

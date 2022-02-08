@@ -6,9 +6,12 @@
     'orderby' => 'ID',
     'order' => 'ASC',
   ));
+  $all_terms = [];
+
   foreach ($terms as $term) {
     array_push($all_terms, $term->term_id);
   }
+
   $all_string = implode(",",$all_terms);
   $images = [];
   $args = array('post_type' => 'project', 'posts_per_page' => '-1');

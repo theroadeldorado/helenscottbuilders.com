@@ -5,13 +5,59 @@
 .wizzy h1:last-child, .wizzy h2:last-child, .wizzy h3:last-child, .wizzy h4:last-child, .wizzy h5:last-child, .wizzy h6:last-child, .wizzy p:last-child, .wizzy ul:last-child, .wizzy ol:last-child, .prose h1:last-child, .prose h2:last-child, .prose h3:last-child, .prose h4:last-child, .prose h5:last-child, .prose h6:last-child, .prose p:last-child, .prose ul:last-child, .prose ol:last-child {
   margin-bottom: 0px;
 }
+.wizzy a:not(.button):not(.link), .prose a:not(.button):not(.link) {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+.wizzy a:not(.button):not(.link):hover, .prose a:not(.button):not(.link):hover {
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+.wizzy ul, .prose ul {
+  margin-left: 1rem;
+  list-style-type: disc;
+  padding-left: 0.5rem;
+}
+.wizzy ol, .prose ol {
+  margin-left: 1rem;
+  list-style-type: decimal;
+  padding-left: 0.5rem;
+}
+.wizzy iframe, .prose iframe {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+.wizzy .aligncenter, .prose .aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  max-width: 100%;
+}
+.wizzy .alignright, .prose .alignright {
+  float: right;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-left: 1.5rem;
+}
+.wizzy .alignleft, .prose .alignleft {
+  float: left;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-right: 1.5rem;
+}
 .prose .button-outline-white {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 /* components */
 /* libs */
-/* ! tailwindcss v3.0.7 | MIT License | https://tailwindcss.com */
+/* ! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com */
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -22,7 +68,7 @@
   box-sizing: border-box; /* 1 */
   border-width: 0; /* 2 */
   border-style: solid; /* 2 */
-  border-color: currentColor; /* 2 */
+  border-color: #e5e7eb; /* 2 */
 }
 ::before,
 ::after {
@@ -63,7 +109,7 @@ hr {
 /*
 Add the correct text decoration in Chrome, Edge, and Safari.
 */
-abbr[title] {
+abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
 }
@@ -326,43 +372,43 @@ Ensure the default browser behavior of the `hidden` attribute.
 /* src is relative to `main.css` */
 @font-face {
     font-family: 'Inter';
-    src: url(5d2e8aa4d25daefc7776.ttf);
+    src: url(fonts/Inter-Regular.ttf);
     font-weight: normal;
     font-style: normal;
   }
 @font-face {
     font-family: 'Inter';
-    src: url(5d2e8aa4d25daefc7776.ttf);
+    src: url(fonts/Inter-Regular.ttf);
     font-weight: 400;
     font-style: normal;
   }
 @font-face {
     font-family: 'Inter';
-    src: url(6c194fcef190454e8654.ttf);
+    src: url(fonts/Inter-Black.ttf);
     font-weight: 900;
     font-style: normal;
   }
 @font-face {
     font-family: 'Inter';
-    src: url(243ba1932ada116d3ab9.ttf);
+    src: url(fonts/Inter-Bold.ttf);
     font-weight: 700;
     font-style: normal;
   }
 @font-face {
     font-family: 'Inter';
-    src: url(e346196ca0b0fe1afca8.ttf);
+    src: url(fonts/Inter-SemiBold.ttf);
     font-weight: 600;
     font-style: normal;
   }
 @font-face {
     font-family: 'Inter';
-    src: url(355c606d62415fd6b0d0.ttf);
+    src: url(fonts/Inter-Medium.ttf);
     font-weight: 500;
     font-style: normal;
   }
 @font-face {
     font-family: 'Inter';
-    src: url(f12ace307867929f1291.ttf);
+    src: url(fonts/Inter-Light.ttf);
     font-weight: 300;
     font-style: normal;
   }
@@ -462,10 +508,16 @@ h1, h2, h3, h4, h5, h6 {
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgb(59 130 246 / 0.5);
@@ -473,16 +525,24 @@ h1, h2, h3, h4, h5, h6 {
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  --tw-blur: var(--tw-empty,/*!*/ /*!*/);
-  --tw-brightness: var(--tw-empty,/*!*/ /*!*/);
-  --tw-contrast: var(--tw-empty,/*!*/ /*!*/);
-  --tw-grayscale: var(--tw-empty,/*!*/ /*!*/);
-  --tw-hue-rotate: var(--tw-empty,/*!*/ /*!*/);
-  --tw-invert: var(--tw-empty,/*!*/ /*!*/);
-  --tw-saturate: var(--tw-empty,/*!*/ /*!*/);
-  --tw-sepia: var(--tw-empty,/*!*/ /*!*/);
-  --tw-drop-shadow: var(--tw-empty,/*!*/ /*!*/);
-  --tw-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
 }
 .container {
   width: 100%;
@@ -573,25 +633,25 @@ button:focus-visible {
     }
 .blog-pagination a {
   display: inline-flex;
-  cursor: pointer;
   align-items: center;
-  border-radius: 0.5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  border-radius: 0.5rem;
   font-size: 16px;
   font-weight: 600;
   line-height: 1;
   -webkit-text-decoration-line: none;
           text-decoration-line: none;
+  cursor: pointer;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(220 38 38 / var(--tw-ring-opacity));
   --tw-ring-offset-width: 2px;
   --tw-ring-offset-color: #fff;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
 }
 .blog-pagination a:focus {
   outline: 2px solid transparent;
@@ -626,6 +686,30 @@ button:focus-visible {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.wizzy a:not(.blog-pagination a):not(.link), .prose a:not(.blog-pagination a):not(.link) {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+.wizzy a:not(.blog-pagination a):not(.link):hover, .prose a:not(.blog-pagination a):not(.link):hover {
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+.wizzy a:not(.blog-pagination a):not(.link), .prose a:not(.blog-pagination a):not(.link) {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+.wizzy a:not(.blog-pagination a):not(.link):hover, .prose a:not(.blog-pagination a):not(.link):hover {
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 .button {
   display: inline-flex;
@@ -1139,26 +1223,26 @@ a:focus-visible {
 }
 .-translate-x-full {
   --tw-translate-x: -100%;
-  transform: var(--tw-transform);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .-translate-y-12 {
   --tw-translate-y: -3rem;
-  transform: var(--tw-transform);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .-translate-y-6 {
   --tw-translate-y: -1.5rem;
-  transform: var(--tw-transform);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .-translate-x-6 {
   --tw-translate-x: -1.5rem;
-  transform: var(--tw-transform);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .translate-x-24 {
   --tw-translate-x: 6rem;
-  transform: var(--tw-transform);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .transform {
-  transform: var(--tw-transform);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .cursor-not-allowed {
   cursor: not-allowed;
@@ -1655,10 +1739,10 @@ a:focus-visible {
 }
 .blur {
   --tw-blur: blur(8px);
-  filter: var(--tw-filter);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .filter {
-  filter: var(--tw-filter);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .transition-all {
   transition-property: all;

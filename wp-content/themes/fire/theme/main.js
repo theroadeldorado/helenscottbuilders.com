@@ -1,5 +1,6 @@
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
+import balanceText from 'balance-text';
 
 const callback = function () {
   window.Alpine = Alpine;

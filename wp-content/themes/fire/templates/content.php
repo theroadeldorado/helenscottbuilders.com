@@ -23,7 +23,7 @@
       </span>
     </div>
     <div class="mb-8">
-      <img class="object-cover mx-auto mb-6 rounded-lg h-80" src="<?php print aq_resize($featured_img_url, 1280, 400, true); ?>" alt="<?php the_title();?>">
+      <img class="object-cover mx-auto mb-6 rounded-lg h-80" src="<?php print aq_resize($featured_img_url, 1280, 400, true, true, true); ?>" alt="<?php the_title();?>">
     </div>
     <div class="max-w-2xl mx-auto wizzy">
       <?php the_content();?>

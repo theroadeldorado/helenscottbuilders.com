@@ -40,6 +40,28 @@
   ol {
     @apply mb-6 last:mb-0;
   }
+  a:not(.button):not(.link) {
+    @apply text-red-600 hover:text-red-800 no-underline hover:underline;
+  }
+  ul {
+    @apply pl-2 ml-4 list-disc;
+  }
+  ol {
+    @apply pl-2 ml-4 list-decimal;
+  }
+  iframe {
+    @apply mx-auto max-w-full;
+  }
+
+  .aligncenter {
+    @apply mx-auto max-w-full my-1;
+  }
+  .alignright {
+    @apply ml-6 float-right my-1;
+  }
+  .alignleft {
+    @apply mr-6 float-left my-1;
+  }
 }
 
 .prose {
