@@ -22,11 +22,14 @@
         $tour = get_field('virtual_tour',$project);
       ?>
         <div class="flex flex-wrap w-full col-start-1 row-start-1 pb-6 -mx-3 transition-all duration-200" :class="{'pointer-events-none': activeSlide !== <?php echo $counter;?>}">
-          <div class="relative w-full mb-8 text-center lg:w-1/3 lg:mb-0 lg:text-left">
+          <div class="relative w-full mb-8 text-center lg:mb-0 lg:text-left <?php echo $excerpt ? 'lg:w-1/3' : 'lg:w-1/2' ;?>">
             <div class="max-w-md mx-auto mb-6 lg:max-w-xs lg:pr-16 lg:ml-0 lg:mb-0">
               <h2 class="mb-4 text-3xl font-bold leading-tight transition-all duration-200 md:text-4xl font-heading" :class="{'opacity-0 -translate-y-6': activeSlide !== <?php echo $counter;?>, 'opacity-100 delay-[75ms]': activeSlide === <?php echo $counter;?>}"><?php echo $title;?></h2>
-              <div class="mb-6 text-xs text-gray-600 transition-all duration-200 md:text-base wizzy" :class="{'opacity-0 -translate-y-6': activeSlide !== <?php echo $counter;?>, 'opacity-100 delay-[150ms]': activeSlide === <?php echo $counter;?>}"
-              ><?php echo $excerpt;?></div>
+              <?php if($excerpt):?>
+                <div class="mb-6 text-xs text-gray-600 transition-all duration-200 md:text-base wizzy" :class="{'opacity-0 -translate-y-6': activeSlide !== <?php echo $counter;?>, 'opacity-100 delay-[150ms]': activeSlide === <?php echo $counter;?>}">
+                  <?php echo $excerpt;?>
+                </div>
+              <?php endif;?>
               <div class="space-x-4 text-center lg:text-left">
                 <?php if($gallery):?>
                   <a class="transition-all duration-200 button button-primary" :class="{'opacity-0 -translate-x-6': activeSlide !== <?php echo $counter;?>, 'opacity-100 delay-[225ms]': activeSlide === <?php echo $counter;?>}" href="<?php the_permalink($project);?>#gallery">Gallery</a>
@@ -37,9 +40,9 @@
               </div>
             </div>
           </div>
-          <div class="w-full px-3 transition-all duration-300 lg:w-2/3" :class="{'opacity-0 translate-x-24': activeSlide !== <?php echo $counter;?>, 'opacity-100': activeSlide === <?php echo $counter;?>}">
+          <div class="w-full px-3 transition-all duration-300 <?php echo $excerpt ? 'lg:w-2/3' : 'lg:w-1/2' ;?>" :class="{'opacity-0 translate-x-24': activeSlide !== <?php echo $counter;?>, 'opacity-100': activeSlide === <?php echo $counter;?>}">
             <div class="overflow-hidden rounded-lg aspect-w-7 aspect-h-5">
-              <img class="w-full h-full object-fit" src="<?php print aq_resize($image['url'], 800, 800, true); ?>" alt="<?php echo $image['alt']; ?>">
+              <img class="object-cover w-full h-full" src="<?php print aq_resize($image['url'], 800, 800, true, true, true); ?>" alt="<?php echo $image['alt']; ?>">
             </div>
           </div>
         </div>

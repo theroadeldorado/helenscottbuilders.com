@@ -53,6 +53,33 @@
                     "new_lines": "wpautop"
                 },
                 {
+                    "key": "field_6201de817e674",
+                    "label": "Quote Text Size",
+                    "name": "quote_text_size",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "text-4xl": "Large",
+                        "text-2xl": "Medium",
+                        "text-lg": "Small",
+                        "text-md": "Extra Small"
+                    },
+                    "default_value": "text-4xl",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
                     "key": "field_61f21013f14e3",
                     "label": "Name",
                     "name": "name",
@@ -172,5 +199,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1644079419
+    "modified": 1644289912
 }

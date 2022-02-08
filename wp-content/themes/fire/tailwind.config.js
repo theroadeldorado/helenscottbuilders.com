@@ -7,6 +7,9 @@ module.exports = {
       pattern: /(mt|mb)-gap-(0|xs|sm|md|lg|xl)/,
       variants: ['lg', 'md'],
     },
+    {
+      pattern: /(text)-(md|lg|2xl|4xl)/,
+    },
   ],
   important: false,
   theme: {

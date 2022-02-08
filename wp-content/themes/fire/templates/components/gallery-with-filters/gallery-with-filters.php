@@ -59,7 +59,7 @@
       <?php endif;?>
     </div>
 
-    <div class="grid grid-cols-2 gap-6 mx-6 mt-4 md:grid-cols-3 lg:grid-cols-4">
+    <div class="grid grid-cols-3 gap-6 mx-6 mt-4 md:grid-cols-4 lg:grid-cols-6">
       <template x-for="(item, index) in filteredEmployees" :key="index">
         <button
           type="button"
@@ -189,7 +189,7 @@
         <?php foreach( $images as $image ):?>
         {
           id: "<?php echo $image['url'];?>",
-          thumbnail: "<?php echo aq_resize($image['url'], 500, 500, true); ?>",
+          thumbnail: "<?php echo aq_resize($image['url'], 300, 300, true, true, true); ?>",
           image: "<?php echo aq_resize($image['url'], 1400, null, false, true, true); ?>",
           imageAlt: "<?php echo $image['alt'];?>",
           tags: "<?php foreach( $image['tags'] as $tag): echo $tag[0] . ' '; endforeach;?>",
@@ -201,7 +201,7 @@
         return {
           termID: "",
           pageNumber: 0,
-          size: 12,
+          size: 24,
           total: "",
           myForData: sourceData,
           showModal: false,

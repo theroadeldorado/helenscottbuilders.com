@@ -21,7 +21,7 @@
       </div>
       <div class="w-full my-auto lg:w-1/2 lg:pl-24">
         <span><?php new Fire_SVG('quote'); ?></span>
-        <h2 class="my-4 text-4xl font-bold font-heading"><?php echo $quote;?></h2>
+        <h2 class="my-4 font-bold font-heading <?php echo $quote_content['quote_text_size'];?>"><?php echo $quote;?></h2>
         <p class="mb-1 text-xl"><?php echo $name;?></p>
         <p class="text-red-600"><?php echo $project;?></p>
       </div>

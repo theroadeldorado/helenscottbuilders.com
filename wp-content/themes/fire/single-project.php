@@ -33,10 +33,10 @@ get_header();
         <?php
         $images = get_field('gallery');
         if( $images ): ?>
-          <div class="grid gap-6 mb-6 md:grid-cols-2" >
+          <div class="grid gap-6 mb-6 md:grid-cols-2" id="gallery">
             <?php foreach( $images as $image ): ?>
               <div class="overflow-hidden rounded-lg">
-                <img class="object-cover w-full h-full" src="<?php print aq_resize($image['url'], 800, 500, true); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                <img class="object-cover w-full h-full" src="<?php print aq_resize($image['url'], 800, 500, true, true, true); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
               </div>
             <?php endforeach; ?>
           </div>
@@ -44,7 +44,7 @@ get_header();
 
 
         <?php if($virtual_tour):?>
-          <div class="w-full overflow-hidden rounded-lg virtual-tour aspect-w-16 aspect-h-9">
+          <div class="w-full overflow-hidden rounded-lg virtual-tour aspect-w-16 aspect-h-9" id="virtual-tour">
             <iframe class="w-full h-full " src="<?php echo $virtual_tour;?>">Your browser doesn't support iframes. Please upgrade your browser</iframe>
           </div>
         <?php endif;?>
