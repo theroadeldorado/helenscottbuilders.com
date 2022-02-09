@@ -109,6 +109,37 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_620332f1ed91d": {
+                    "key": "layout_620332f1ed91d",
+                    "name": "communities_grid",
+                    "label": "Communities Grid",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_620332faed91e",
+                            "label": "Communities Grid",
+                            "name": "communities_grid",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_6203322155f41"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_61fc6c101e56c": {
                     "key": "layout_61fc6c101e56c",
                     "name": "contact_form",
@@ -494,6 +525,13 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "communities"
+            }
         ]
     ],
     "menu_order": -1,
@@ -505,5 +543,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1644290161
+    "modified": 1644376850
 }

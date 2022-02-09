@@ -26,7 +26,9 @@
     @apply text-xl font-bold md:text-2xl;
   }
 }
-
+.prose {
+  @apply px-4;
+}
 .wizzy,
 .prose {
   h1,
@@ -61,6 +63,10 @@
   }
   .alignleft {
     @apply mr-6 float-left my-1;
+  }
+
+  iframe {
+    @apply max-w-full mx-auto;
   }
 }
 

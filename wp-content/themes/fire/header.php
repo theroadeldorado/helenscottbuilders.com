@@ -61,7 +61,7 @@
                 'theme_location'  => 'menu-1',
                 'container'       => 'ul',
                 'menu_id'         => 'mobile-menu',
-                'menu_class'      => 'flex mt-32 flex-col w-full space-y-4',
+                'menu_class'      => 'flex mt-40 flex-col w-full space-y-4',
                 'list_item_class' => 'mx-4',
                 'link_class'      => 'text-[28px] block text-center font-medium w-full no-underline text-white',
                 )

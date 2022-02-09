@@ -27,11 +27,6 @@
             <?php if($feature_title):?>
               <h3 class="px-8 mb-4 text-2xl font-bold font-heading text-rose-600"><?php echo $feature_title;?></h3>
             <?php endif;?>
-            <?php if($image):?>
-              <div class="w-full mb-4 overflow-hidden rounded-lg aspect-w-3 aspect-h-2">
-                <img class="object-cover w-full h-full" src="<?php print aq_resize($image['url'], 900, 600, true); ?>" alt="<?php echo $image['alt']; ?>">
-              </div>
-            <?php endif;?>
             <?php if($copy):?>
               <div class="leading-relaxed text-gray-700 wizzy"><?php echo $copy;?></div>
             <?php endif;?>

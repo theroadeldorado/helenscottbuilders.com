@@ -27,7 +27,7 @@
             'theme_location'  => 'footer',
             'container'       => 'ul',
             'menu_id'         => 'footer',
-            'menu_class'      => 'flex items-center justify-center space-x-8 lg:flex-row',
+            'menu_class'      => 'flex flex-col space-x-0 space-y-2 lg:space-y-0 items-center justify-center lg:space-x-8 lg:flex-row',
             'list_item_class' => 'mx-4',
             'link_class'      => 'font-bold text-black no-underline hover:text-red-600 text-md font-heading hover:text-blueGray-600',
             )
