@@ -11,7 +11,7 @@
 
 <?php $section->start(); ?>
 
-  <div class="container px-4 mx-auto" x-cloak x-data="projectSlider<?php echo $section->count; ?>()">
+  <div class="container !max-w-5xl px-4 mx-auto" x-cloak x-data="projectSlider<?php echo $section->count; ?>()">
     <div class="relative grid w-full grid-cols-1 grid-rows-1">
       <?php foreach ($projects as $project) {
         $counter++;
@@ -22,7 +22,8 @@
         $tour = get_field('virtual_tour',$project);
       ?>
         <div class="flex flex-wrap w-full col-start-1 row-start-1 pb-6 -mx-3 transition-all duration-200" :class="{'pointer-events-none': activeSlide !== <?php echo $counter;?>}">
-          <div class="relative w-full mb-8 text-center lg:mb-0 lg:text-left <?php echo $excerpt ? 'lg:w-1/3' : 'lg:w-1/2' ;?>">
+
+          <div class="relative flex items-center w-full mb-8 text-center lg:mb-0 lg:text-left lg:w-1/3">
             <div class="max-w-md mx-auto mb-6 lg:max-w-xs lg:pr-16 lg:ml-0 lg:mb-0">
               <h2 class="mb-4 text-3xl font-bold leading-tight transition-all duration-200 md:text-4xl font-heading" :class="{'opacity-0 -translate-y-6': activeSlide !== <?php echo $counter;?>, 'opacity-100 delay-[75ms]': activeSlide === <?php echo $counter;?>}"><?php echo $title;?></h2>
               <?php if($excerpt):?>
@@ -40,7 +41,8 @@
               </div>
             </div>
           </div>
-          <div class="w-full px-3 transition-all duration-300 <?php echo $excerpt ? 'lg:w-2/3' : 'lg:w-1/2' ;?>" :class="{'opacity-0 translate-x-24': activeSlide !== <?php echo $counter;?>, 'opacity-100': activeSlide === <?php echo $counter;?>}">
+
+          <div class="w-full px-3 transition-all duration-300 shrink-0 lg:w-2/3" :class="{'opacity-0 translate-x-24': activeSlide !== <?php echo $counter;?>, 'opacity-100': activeSlide === <?php echo $counter;?>}">
             <div class="overflow-hidden rounded-lg aspect-w-7 aspect-h-5">
               <img class="object-cover w-full h-full" src="<?php print aq_resize($image['url'], 800, 800, true, true, true); ?>" alt="<?php echo $image['alt']; ?>">
             </div>

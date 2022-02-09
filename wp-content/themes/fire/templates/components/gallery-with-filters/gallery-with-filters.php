@@ -78,7 +78,7 @@
 
     <div class="py-6">
       <div
-        class="flex items-center justify-between w-full py-6 mx-auto md:w-1/2"
+        class="flex items-center justify-center w-full py-6 mx-auto space-x-2 md:w-1/2"
         x-show="pageCount() > 1"
       >
         <button
@@ -122,6 +122,7 @@
         </button>
         <template x-for="(page,index) in pages()" :key="index">
           <button
+            x-show="index < pageNumber + 4 && index >= 0 && index > pageNumber - 4 || (index > pageNumber && index < 7)"
             class="px-3 py-2 rounded"
             :class="{ 'bg-red-600 text-white font-bold' : index === pageNumber }"
             type="button"
@@ -130,6 +131,7 @@
             <span x-text="index+1"></span>
           </button>
         </template>
+
         <button
           x-on:click="nextPage"
           :disabled="pageNumber >= pageCount() -1"
