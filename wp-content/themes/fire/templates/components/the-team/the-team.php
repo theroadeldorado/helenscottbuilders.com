@@ -74,7 +74,7 @@
     <div class="rounded-xl w-[95vw] overflow-y-scroll cursor-default p-4 h-[550px] overflow-hidden bg-white border border-gray-400 md:hidden" @click.away="openModal = false">
       <div class="flex flex-col items-center space-y-3">
 
-        <div class="w-3/4 h-full shrink-0">
+        <div class="w-3/4 max-w-[300px] h-full shrink-0">
           <img class="object-cover w-full h-full rounded-lg" :src="imageMobile" :alt="imageAlt">
         </div>
 

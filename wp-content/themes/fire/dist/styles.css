@@ -1233,6 +1233,9 @@ a:focus-visible {
 .max-w-\[900px\] {
   max-width: 900px;
 }
+.max-w-\[300px\] {
+  max-width: 300px;
+}
 .shrink-0 {
   flex-shrink: 0;
 }
