@@ -43,6 +43,7 @@ function projects_post_type() {
 		'menu_icon'             => 'dashicons-admin-multisite',
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
+		'show_in_rest'          => true,
 		'can_export'            => true,
 		'has_archive'           => false,
 		'exclude_from_search'   => false,
@@ -87,6 +88,7 @@ function Image_Tags() {
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
+		'show_in_rest'               => true,
 		'show_tagcloud'              => false,
 	);
 	register_taxonomy( 'image-tags', array( 'attachments', 'posts' ), $args );

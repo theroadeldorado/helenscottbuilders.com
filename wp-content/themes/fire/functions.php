@@ -155,3 +155,19 @@ add_action( 'wp_enqueue_scripts', 'fire_scripts' );
 foreach (glob(get_template_directory() . "/inc/*.php") as $filename){
   include $filename;
 }
+
+
+add_action( 'rest_api_init', 'add_rest_taxonomy');
+function add_rest_taxonomy() {
+  register_rest_field( 'attachment', 'imageTag',
+    array(
+      'get_callback' => 'get_taxonomy_for_rest',
+      'show_in_rest' => true,
+    )
+  );
+}
+
+function get_taxonomy_for_rest( $post ) {
+  $terms = wp_get_post_terms($post['id'], 'image-tags');
+  return $terms;
+}
