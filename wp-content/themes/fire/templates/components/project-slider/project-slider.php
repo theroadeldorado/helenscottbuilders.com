@@ -4,7 +4,7 @@
   $projects = get_sub_field('projects');
 
   $section->add_classes([
-    ''
+    'max-w-screen overflow-x-hidden'
   ]);
   $counter =0;
 ?>

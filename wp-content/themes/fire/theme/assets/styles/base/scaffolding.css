@@ -13,6 +13,9 @@
   img {
     max-width: 100%;
   }
+  svg {
+    @apply w-full;
+  }
 
   pre {
     @apply bg-gray-100 p-2 rounded-lg text-[14px] text-gray-800;

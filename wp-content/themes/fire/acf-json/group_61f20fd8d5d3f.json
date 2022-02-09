@@ -66,8 +66,8 @@
                         "id": ""
                     },
                     "choices": {
-                        "text-4xl": "Large",
-                        "text-2xl": "Medium",
+                        "text-xl lg:text-4xl": "Large",
+                        "text-xl lg:text-2xl": "Medium",
                         "text-lg": "Small",
                         "text-md": "Extra Small"
                     },
@@ -199,5 +199,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1644289912
+    "modified": 1644413477
 }

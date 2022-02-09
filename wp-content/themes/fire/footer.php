@@ -15,7 +15,7 @@
     <div class="container px-4 mx-auto">
       <div class="flex flex-col mb-10 lg:flex-row">
         <a class="inline-block mx-auto mb-10 text-3xl font-semibold leading-none text-red-600 lg:mb-0 lg:ml-0 lg:mr-auto" href="#">
-          <span class="block w-40 h-16"><?php new Fire_SVG('logo-black'); ?></span>
+          <span class="block w-40 h-16"><?php new Fire_SVG('logo-footer'); ?></span>
         </a>
 
 

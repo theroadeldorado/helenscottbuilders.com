@@ -34,8 +34,8 @@
 
           <button
             type="button"
-            class="w-full px-3 mb-12 md:w-1/2 lg:w-1/4"
-            @click="openBio('<?php echo $name;?>', '<?php echo $title;?>', '<?php echo $email;?>', '<?php echo $phone_number;?>', <?php echo htmlspecialchars($bioJson);?>, '<?php echo $image['url'];?>', '<?php echo $image['alt'];?>')"
+            class="w-full px-3 mb-12 md:w-1/2 lg:w-1/3"
+            @click="openBio('<?php echo $name;?>', '<?php echo $title;?>', '<?php echo $email;?>', '<?php echo $phone_number;?>', <?php echo htmlspecialchars($bioJson);?>, '<?php echo $image['url'];?>', '<?php echo $image['alt'];?>', '<?php echo $thumbnail['url'];?>')"
           >
             <img class="object-cover object-top w-64 h-64 mx-auto rounded-lg" src="<?php echo $thumbnail['url'];?>" alt="<?php echo $thumbnail['alt'];?>">
             <p class="mt-6 text-xl"><?php echo $name;?></p>
@@ -52,7 +52,7 @@
     class="fixed inset-0 flex items-center justify-center w-screen h-screen bg-black cursor-pointer bg-opacity-40"
     x-show="openModal"
   >
-    <div class="rounded-xl w-[900px] cursor-default p-4 h-[550px] overflow-hidden bg-white border border-gray-400" @click.away="openModal = false">
+    <div class="hidden md:block rounded-xl w-[95vw] max-w-[900px] cursor-default p-4 h-[550px] overflow-hidden bg-white border border-gray-400" @click.away="openModal = false">
       <div class="flex h-full space-x-4">
         <div class="w-2/5 h-full shrink-0">
           <img class="object-cover w-full h-full rounded-lg" :src="image" :alt="imageAlt">
@@ -69,8 +69,30 @@
         </div>
       </div>
     </div>
+
+
+    <div class="rounded-xl w-[95vw] overflow-y-scroll cursor-default p-4 h-[550px] overflow-hidden bg-white border border-gray-400 md:hidden" @click.away="openModal = false">
+      <div class="flex flex-col items-center space-y-3">
+
+        <div class="w-3/4 h-full shrink-0">
+          <img class="object-cover w-full h-full rounded-lg" :src="imageMobile" :alt="imageAlt">
+        </div>
+
+        <div class="text-center">
+          <h3 class="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl" x-text="name"></h3>
+          <p class="block mt-1 text-base font-semibold tracking-wide text-red-600 uppercase" x-text="title"></p>
+          <a :href="'mailto:' + email" class="text-sm text-gray-700" x-text="email"></a></br>
+          <a :href="'tel:' + phone" class="text-sm text-gray-700" x-text="phone"></a>
+        </div>
+
+        <div class="w-full">
+          <p class="pr-4 mx-auto mt-4 text-gray-700 wizzy" x-html="bio"></p>
+        </div>
+
+      </div>
+    </div>
   </div>
-  <script>
+   <script>
     function team() {
       return {
         openModal: false,
@@ -80,8 +102,9 @@
         phone: '',
         bio: '',
         image: '',
+        imageMobile: '',
         imageAlt: '',
-        openBio( name, title, email, phone, bio, image, imageAlt ) {
+        openBio( name, title, email, phone, bio, image, imageAlt, imageMobile ) {
           this.openModal = true;
           this.name = name;
           this.title = title;
@@ -89,8 +112,8 @@
           this.phone = phone;
           this.bio = bio;
           this.image = image;
+          this.imageMobile = imageMobile;
           this.imageAlt = imageAlt;
-          console.log(name, this.openModal);
         }
       }
     }

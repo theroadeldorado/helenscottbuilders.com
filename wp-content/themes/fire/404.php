@@ -10,8 +10,10 @@
 <?php get_header(); ?>
 
   <main id="primary" class="site-main">
+    <div class="text-center py-28">
     <h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'fire' ); ?></h1>
     <a class="mt-8 button button-primary" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Back Home</a>
+    </div>
   </main>
 
 <?php get_footer(); ?>
