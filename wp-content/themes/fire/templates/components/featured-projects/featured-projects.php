@@ -27,7 +27,6 @@
           $project = get_sub_field('project');
           $project_image = get_field('featured_image', $project->ID); ?>
 
-
           <div class="aspect-square <?php echo $counter === 3 || $counter === 6 ? 'lg:col-span-2 lg:row-span-2' : '';?>">
             <img class="object-cover w-full h-full rounded-lg" src="<?php echo $project_image['url'];?>" alt=""/>
           </div>
@@ -35,7 +34,7 @@
         <?php endwhile;
       endif; ?>
     </div>
-    <div class="mx-auto text-center"><a class="button button-primary" href="#">View All Projects</a></div>
+    <!-- <div class="mx-auto text-center"><a class="button button-primary" href="#">View All Projects</a></div> -->
   </div>
 
 
