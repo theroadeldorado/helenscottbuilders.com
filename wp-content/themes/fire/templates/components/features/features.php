@@ -32,7 +32,7 @@
           $image = get_sub_field('image');
           $copy = get_sub_field('copy');
           ?>
-          <div class="h-full p-6 bg-white shadow rounded-xl">
+          <div class="h-full p-6 bg-white border border-gray-200 shadow-md rounded-xl">
             <?php if($feature_title):?>
               <h3 class="mb-4 text-2xl font-bold font-heading text-rose-600"><?php echo $feature_title;?></h3>
             <?php endif;?>
