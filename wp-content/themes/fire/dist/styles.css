@@ -1197,6 +1197,9 @@ a:focus-visible {
 .w-\[80vw\] {
   width: 80vw;
 }
+.w-14 {
+  width: 3.5rem;
+}
 .w-12 {
   width: 3rem;
 }
