@@ -12,6 +12,9 @@
 <?php $section->start(); ?>
 
   <div class="container !max-w-5xl px-4 mx-auto" x-cloak x-data="projectSlider<?php echo $section->count; ?>()">
+    <?php if($title):?>
+      <h2 class="mb-8 text-3xl font-bold text-center lg:text-4xl font-heading"><?php echo $title;?></h2>
+    <?php endif;?>
     <div class="relative grid w-full grid-cols-1 grid-rows-1">
       <?php foreach ($projects as $project) {
         $counter++;

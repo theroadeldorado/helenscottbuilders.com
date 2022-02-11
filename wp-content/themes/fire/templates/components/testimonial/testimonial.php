@@ -19,8 +19,8 @@
         <div class="absolute top-0 right-0 w-full h-full mt-6 -mr-6 bg-gray-900 rounded-lg bg-opacity-5"></div>
         <img class="absolute top-0 right-0 object-cover w-full h-full rounded-lg" src="<?php print aq_resize($image['url'], 900, 900, true); ?>" alt="<?php echo $image_alt; ?>">
       </div>
-      <div class="w-full my-auto lg:w-1/2 lg:pl-24">
-        <span><?php new Fire_SVG('quote'); ?></span>
+      <div class="flex flex-col w-full my-auto lg:w-1/2 lg:pl-24">
+        <div class="w-14"><?php new Fire_SVG('quote'); ?></div>
         <h2 class="my-4 font-bold font-heading wizzy <?php echo $quote_content['quote_text_size'];?>"><?php echo $quote;?></h2>
         <p class="mb-1 text-xl"><?php echo $name;?></p>
         <p class="text-red-600"><?php echo $project;?></p>
