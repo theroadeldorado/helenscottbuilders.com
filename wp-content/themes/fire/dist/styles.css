@@ -2061,15 +2061,6 @@ a:focus-visible {
   }
 }
 @media (min-width: 992px) {
-  .lg\:absolute {
-    position: absolute;
-  }
-  .lg\:bottom-0 {
-    bottom: 0px;
-  }
-  .lg\:left-0 {
-    left: 0px;
-  }
   .lg\:order-last {
     order: 9999;
   }

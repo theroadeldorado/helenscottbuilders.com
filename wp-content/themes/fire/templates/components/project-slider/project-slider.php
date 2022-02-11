@@ -13,8 +13,16 @@
 
   <div class="container !max-w-5xl px-4 mx-auto" x-cloak x-data="projectSlider<?php echo $section->count; ?>()">
     <?php if($title):?>
-      <h2 class="mb-8 text-3xl font-bold text-center lg:text-4xl font-heading"><?php echo $title;?></h2>
+      <h2 class="mb-6 text-3xl font-bold text-center lg:text-4xl font-heading"><?php echo $title;?></h2>
     <?php endif;?>
+     <div class="flex items-center justify-center mb-8 text-center">
+        <button class="mr-4" @click="prev">
+          <svg class="w-8 h-8 text-red-600 hover:text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>
+        </button>
+        <button @click="next">
+          <svg class="w-8 h-8 text-red-600 hover:text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </button>
+      </div>
     <div class="relative grid w-full grid-cols-1 grid-rows-1">
       <?php foreach ($projects as $project) {
         $counter++;
@@ -52,14 +60,7 @@
           </div>
         </div>
       <?php }?>
-      <div class="flex justify-center lg:absolute lg:bottom-0 lg:left-0">
-        <button class="mr-4" @click="prev">
-          <svg class="w-8 h-8 text-red-600 hover:text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>
-        </button>
-        <button @click="next">
-          <svg class="w-8 h-8 text-red-600 hover:text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-        </button>
-      </div>
+
     </div>
     <script>
       function projectSlider<?php echo $section->count; ?>() {
