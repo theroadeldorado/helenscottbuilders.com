@@ -1541,14 +1541,20 @@ a:focus-visible {
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
-.fill-current {
-  fill: currentColor;
-}
 .fill-black {
   fill: #000;
 }
 .fill-white {
   fill: #fff;
+}
+.fill-current {
+  fill: currentColor;
+}
+.stroke-black {
+  stroke: #000;
+}
+.stroke-white {
+  stroke: #fff;
 }
 .object-contain {
   -o-object-fit: contain;
@@ -1761,11 +1767,11 @@ a:focus-visible {
   -webkit-text-decoration-line: none;
           text-decoration-line: none;
 }
-.opacity-0 {
-  opacity: 0;
-}
 .opacity-100 {
   opacity: 1;
+}
+.opacity-0 {
+  opacity: 0;
 }
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -2300,6 +2306,9 @@ a:focus-visible {
   }
   .lg\:fill-black {
     fill: #000;
+  }
+  .lg\:stroke-black {
+    stroke: #000;
   }
   .lg\:py-20 {
     padding-top: 5rem;
