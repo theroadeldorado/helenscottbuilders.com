@@ -1,276 +1,291 @@
 <?php
-
-  $terms = get_terms(array(
+   $terms = get_terms(array(
     'taxonomy' => 'image-tags',
     'hide_empty' => true,
     'orderby' => 'ID',
     'order' => 'ASC',
   ));
   $all_terms = [];
-
   foreach ($terms as $term) {
     array_push($all_terms, $term->term_id);
   }
-
   $all_string = implode(",",$all_terms);
-  $images = [];
-  $args = array('post_type' => 'project', 'posts_per_page' => '-1');
-  query_posts($args);
-  while ( have_posts() ) : the_post();
-    $post_images = get_field('gallery');
-    if( $post_images ):
-      foreach( $post_images as $image ):
-        $tags_array = [];
-        $tags = get_field('tags', $image['ID']);
-        if( $tags ):
-          foreach( $tags as $tag ):
-            array_push($tags_array, [$tag->term_id, $tag->name]);
-          endforeach;
-        endif;
-        array_push($images, ['ID' => $image['ID'], 'url' => $image['url'], 'alt' => $image['alt'], 'tags' => $tags_array]);
-      endforeach;
-    endif;
-  endwhile;
-  wp_reset_query();
+
   $section->add_classes([
-    'relative'
+    ''
   ]);
 ?>
 
 <?php $section->start(); ?>
 
-  <div x-data="gallery()">
-    <div class="container mx-auto" x-ref="gallery">
+  <div class="px-4" x-data="galleryDisplay" x-ref="gallerySection">
+     <div class="flex flex-wrap items-start py-4">
+      <button
+        @click="allProjects, viewPage(0)"
+        class="py-2.5 mb-2 mr-2 border button button-primary hover:bg-gray-700"
+      ><?php esc_html_e( 'Homes', 'fire');?></button>
       <?php if ($terms): ?>
-        <div class="flex flex-wrap items-start py-4">
+        <?php foreach ($terms as $term):?>
           <button
-            @click="termID = '', viewPage(0)"
+            @click="byTerms('<?php echo $term->slug; ?>'),viewPage(0)"
             class="py-2.5 mb-2 mr-2 border button button-primary hover:bg-gray-700"
-            :class="{'bg-gray-700': termID === ''}"
-          ><?php esc_html_e( 'All', 'fire');?></button>
-          <?php foreach ($terms as $term):?>
-            <button
-              @click="termID = '<?php echo $term->term_id; ?>',viewPage(0)"
-              class="py-2.5 mb-2 mr-2 border button button-primary hover:bg-gray-700"
-              :class="{'bg-gray-700': termID === '<?php echo $term->term_id; ?>'}"
-            ><?php echo $term->name; ?></button>
-          <?php endforeach; ?>
-        </div>
+          ><?php echo $term->name; ?></button>
+        <?php endforeach; ?>
       <?php endif;?>
     </div>
-
-    <div class="grid grid-cols-3 gap-6 mx-6 mt-4 md:grid-cols-4 lg:grid-cols-6">
-      <template x-for="(item, index) in filteredEmployees" :key="index">
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+      <!-- BASE GALLERY OF HOMES -->
+      <template x-for="index in size" :key="index" >
         <button
-          type="button"
-          class="overflow-hidden rounded-xl"
-          @click="openModal(item.image, item.imageAlt)"
+          x-show="gallery[index - 1]"
+          @click="clickHome(gallery[index - 1]?.id)"
+          class="block w-full overflow-hidden duration-500 rounded-lg aspect-w-7 aspect-h-5"
         >
-          <img
-            loading="lazy"
-            class="object-cover w-full h-full"
-            :src="item.thumbnail"
-            :alt="item.imageAlt"
-          />
+          <img class="object-cover w-full h-full" :src="gallery[index - 1]?.acf?.featured_image.url" loading="lazy" :alt="gallery[index - 1]?.acf?.featured_image.alt" width="500" :height="500"/>
+        </button>
+      </template>
+
+      <template x-for="index in total" :key="index" >
+        <button
+          x-show="gallery?.acf?.gallery[index - 1]"
+          @click="openModal([index - 1])"
+          class="block w-full overflow-hidden duration-500 rounded-lg aspect-w-7 aspect-h-5"
+        >
+          <img class="object-cover w-full h-full" :src="gallery?.acf?.gallery[index - 1]?.sizes?.large" loading="lazy" :alt="`image-${index - 1}`" width="700" height="500"/>
         </button>
       </template>
     </div>
 
-    <div class="py-6">
-      <div
-        class="flex items-center justify-center w-full py-6 mx-auto space-x-2 md:w-1/2"
-        x-show="pageCount() > 1"
+    <div
+      class="flex items-center justify-center w-full py-6 mx-auto space-x-2 md:w-1/2"
+      x-show="pageCount() > 1"
+    >
+      <button
+        @click="prevPage"
+        class="text-red-600 transition-all duration-200 hover:text-red-800"
+        :disabled="pageNumber === 0"
+        :class="{ 'disabled cursor-not-allowed opacity-30' : pageNumber === 0 }"
       >
-        <button
-          x-on:click="viewPage(0)"
-          :disabled="pageNumber==0"
-          :class="{ 'disabled cursor-not-allowed text-gray-600' : pageNumber==0 }"
+        <svg
+          class="w-8 h-8"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         >
-          <svg
-            class="w-8 h-8 text-red-600"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polygon points="19 20 9 12 19 4 19 20"></polygon>
-            <line x1="5" y1="19" x2="5" y2="5"></line>
-          </svg>
-        </button>
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <template x-for="(page,index) in pages()" :key="index">
         <button
-          x-on:click="prevPage"
-          :disabled="pageNumber==0"
-          :class="{ 'disabled cursor-not-allowed text-gray-600' : pageNumber==0 }"
+          x-show="index < pageNumber + 4 && index >= 0 && index > pageNumber - 4 || (index > pageNumber && index < 7)"
+          class="px-3 py-2 rounded"
+          :class="{ 'bg-red-600 text-white font-bold' : index === pageNumber }"
+          type="button"
+          @click="viewPage(index)"
         >
-          <svg
-            class="w-8 h-8 text-red-600"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
+          <span x-text="index+1"></span>
         </button>
-        <template x-for="(page,index) in pages()" :key="index">
-          <button
-            x-show="index < pageNumber + 4 && index >= 0 && index > pageNumber - 4 || (index > pageNumber && index < 7)"
-            class="px-3 py-2 rounded"
-            :class="{ 'bg-red-600 text-white font-bold' : index === pageNumber }"
-            type="button"
-            x-on:click="viewPage(index)"
-          >
-            <span x-text="index+1"></span>
-          </button>
-        </template>
+      </template>
 
-        <button
-          x-on:click="nextPage"
-          :disabled="pageNumber >= pageCount() -1"
-          :class="{ 'disabled cursor-not-allowed text-gray-600' : pageNumber >= pageCount() -1 }"
+      <button
+        @click="nextPage"
+        class="text-red-600 transition-all duration-200 hover:text-red-800"
+        :disabled="pageNumber >= pageCount() -1"
+        :class="{ 'disabled cursor-not-allowed opacity-30' : pageNumber >= pageCount() -1 }"
+      >
+        <svg
+          class="w-8 h-8"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         >
-          <svg
-            class="w-8 h-8 text-red-600"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-        <button
-          x-on:click="viewPage(Math.ceil(total/size)-1)"
-          :disabled="pageNumber >= pageCount() -1"
-          :class="{ 'disabled cursor-not-allowed text-gray-600' : pageNumber >= pageCount() -1 }"
-        >
-          <svg
-            class="w-8 h-8 text-red-600"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polygon points="5 4 15 12 5 20 5 4"></polygon>
-            <line x1="19" y1="5" x2="19" y2="19"></line>
-          </svg>
-        </button>
-      </div>
-
-      <div
-        x-cloak
-        class="z-[10002] inset-0 fixed flex items-center justify-center w-screen h-screen transition-all duration-200 bg-black bg-opacity-60"
-        :class="{'opacity-0 pointer-events-none': !showModal}"
-        x-trap.noscroll="showModal"
-        @click="showModal = false"
-        >
-        <div class="flex relative items-center justify-center h-[80vh] w-[80vw] transition-all duration-200" :class="{'-translate-y-12': !showModal}">
-          <img class="object-contain object-center w-full h-full" :src="modalImage" :alt="modalAlt">
-        </div>
-      </div>
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
     </div>
 
-    <script>
-      var sourceData = [
-        <?php foreach( $images as $image ):?>
-        {
-          id: "<?php echo $image['url'];?>",
-          thumbnail: "<?php echo aq_resize($image['url'], 300, 300, true, true, true); ?>",
-          image: "<?php echo aq_resize($image['url'], 1400, null, false, true, true); ?>",
-          imageAlt: "<?php echo $image['alt'];?>",
-          tags: "<?php foreach( $image['tags'] as $tag): echo $tag[0] . ' '; endforeach;?>",
-        },
-        <?php endforeach; ?>
-      ];
+    <!-- MODAL -->
+    <div x-cloak class="z-[10002] inset-0 fixed flex items-center justify-center w-screen h-screen transition-all duration-200 opacity-0" :class="{'opacity-0 pointer-events-none': !showModal, 'opacity-100': showModal}" x-trap.noscroll="showModal">
+      <div x-show="showModal" @click="showModal = false" class="fixed inset-0 w-screen h-screen bg-black bg-opacity-60"></div>
+      <div class="flex relative items-center justify-center pointer-events-none h-[80vh] w-[80vw] transition-all duration-200" :class="{'-translate-y-12': !showModal}">
 
-      function gallery() {
+        <div class="absolute bottom-0 flex items-center justify-center w-20 h-8 space-x-4 pointer-events-auto bg-black/60">
+          <button @click="prevImage()">
+             <svg
+              class="text-white transition-transform duration-200 w-7 h-7 hover:scale-105"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <button @click="nextImage()">
+            <svg
+              class="text-white transition-transform duration-200 w-7 h-7 hover:scale-105"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+        <img class="object-contain object-center max-w-full max-h-full rounded-lg" :src="modalImage" alt="Modal Image">
+      </div>
+    </div>
+  </div>
+
+
+
+   <script>
+      function galleryDisplay() {
         return {
-          termID: "",
-          pageNumber: 0,
-          size: 24,
-          total: "",
-          myForData: sourceData,
           showModal: false,
+          loading: true,
+          firstLoad: false,
+          baseEndpoint: '<?php echo esc_url( home_url( '/wp-json/wp/v2' ) );?>',
           modalImage: "",
-          modalAlt: "",
+          currentImage: "",
+          currentTerm: "all-homes",
 
-          get filteredEmployees() {
-            const start = this.pageNumber * this.size,
-              end = start + this.size;
-
-            if (this.termID === "") {
-              this.total = this.myForData.length;
-              return this.myForData.slice(start, end);
-            }
-
-            this.total = this.myForData.filter((item) => {
-              return item.tags.includes(this.termID);
-            }).length;
-
-            return this.myForData.filter((item) => {
-              return item.tags.includes(this.termID);
-            }).slice(start, end);
+          // allTerms: [],
+          // currentTerms: [],
+          size: 12,
+          offset: 0,
+          scrollPosition: 0,
+          gallerySrc: [],
+          gallery: [],
+          pageNumber: 0,
+          total: 0,
+          async init(){
+            this.scrollPosition = this.$refs.gallerySection.offsetTop;
+            const res = await fetch(`${this.baseEndpoint}/project?per_page=${this.size}`);
+            this.gallerySrc = await res.json();
+            this.total = await parseInt(res.headers.get('X-WP-Total'));
+            this.gallery = this.gallerySrc;
+            this.loading = false;
           },
-          openModal(src, alt){
-            console.log(src, alt);
-            this.modalImage = src;
-            this.modalAlt = alt;
-            this.showModal = true;
+          async clickHome(id){
+            this.scrollToTop();
+            this.currentTerm = "specific-home";
+            const res = await fetch(`${this.baseEndpoint}/project/${id}`);
+            this.gallery = await res.json();
+            this.size = this.gallery?.acf?.gallery.length;
+            console.log(this.gallery, this.size);
+          },
+          scrollToTop(){
+            window.scrollTo({
+              top: this.scrollPosition,
+              behavior: 'smooth'
+            });
           },
           pages() {
             return Array.from({
               length: Math.ceil(this.total / this.size),
             });
           },
-          nextPage() {
-            this.pageNumber++;
+           nextPage() {
+            this.$el.blur();
+            if(this.pageNumber < this.pageCount() - 1) {
+              this.pageNumber++;
+              this.viewPage(this.pageNumber);
+              this.scrollToTop();
+            }
           },
           prevPage() {
-            this.pageNumber--;
+            this.$el.blur();
+            if(this.pageNumber > 0) {
+              this.pageNumber--;
+              this.viewPage(this.pageNumber);
+              this.scrollToTop();
+            }
           },
           pageCount() {
             return Math.ceil(this.total / this.size);
           },
-          startResults() {
-            return this.pageNumber * this.size + 1;
-          },
-          endResults() {
-            let resultsOnPage = (this.pageNumber + 1) * this.size;
-            if (resultsOnPage <= this.total) {
-              return resultsOnPage;
-            }
-            return this.total;
-          },
-          scrollToTop(){
-            window.scrollTo({
-              top: window.pageYOffset + this.$refs.gallery.getBoundingClientRect().top,
-              behavior: 'smooth'
-            });
+          openModal(img){
+            this.currentImage = img;
+            this.modalImage = this.gallery?.acf?.gallery[img]?.sizes?.modal;
+            this.showModal = true;
           },
           viewPage(index) {
             this.scrollToTop();
             this.$el.blur();
             this.pageNumber = index;
           },
-        };
+          prevImage(){
+            if(this.currentImage === 0){
+              this.currentImage = this.total - 1;
+            } else {
+              this.currentImage--;
+            }
+            this.modalImage = this.gallery?.acf?.gallery[this.currentImage]?.sizes?.modal;
+          },
+          nextImage(){
+            this.currentImage++;
+            if(this.currentImage === this.total){
+              this.currentImage = 0;
+            }
+            this.modalImage = this.gallery?.acf?.gallery[this.currentImage]?.sizes?.modal;
+          },
+          getImage(id){
+            console.log(id);
+            return this.currentTerm === "all-homes" ? this.gallery[id]?.acf?.featured_image.url : this.gallery[id]?.media_details?.sizes?.large?.source_url;
+          },
+          async viewPage(index) {
+            this.$el.blur();
+            this.loading = true;
+            this.scrollToTop();
+            this.pageNumber = index;
+
+            if(this.currentTerm = "all-homes"){
+
+            } else if(''){
+              const res = await fetch(`${this.baseEndpoint}/project?per_page=${this.size}&offset=${(index * this.size)}`);
+            } else {
+              const res = await fetch(`${this.baseEndpoint}/project?per_page=${this.size}&offset=${(index * this.size)}`);
+            }
+
+            this.gallery = await res.json();
+            this.loading = false;
+          },
+          async allProjects(){
+            this.currentTerm = "special-home";
+            const res = await fetch(`${this.baseEndpoint}/project?per_page=${this.size}`);
+            this.gallery = await res.json();
+            this.total = await parseInt(res.headers.get('X-WP-Total'));
+            this.loading = false;
+          },
+          async byTerms(slug){
+            // const res = await fetch(`${this.baseEndpoint}/media?per_page=${this.size}&filter[image-tags]=closet`);
+            // this.gallery = await res.json();
+            // this.total = await parseInt(res.headers.get('X-WP-Total'));
+            // this.loading = false;
+          }
+        }
       }
     </script>
-  </div>
 
 <?php $section->end(); ?>

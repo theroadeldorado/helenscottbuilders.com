@@ -100,6 +100,9 @@ if ( ! function_exists( 'fire_setup' ) ) :
         'flex-height' => true,
       )
     );
+
+    add_image_size( 'modal', 1600, 1000, false );
+
   }
 endif;
 add_action( 'after_setup_theme', 'fire_setup' );
