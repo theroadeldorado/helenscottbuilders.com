@@ -18,12 +18,16 @@
 
 <?php $section->start(); ?>
 
+
+
+
+
   <div class="px-4" x-data="galleryDisplay" x-ref="gallerySection">
-     <div class="flex flex-wrap items-start py-4">
+    <div class="container flex flex-wrap items-start py-4">
       <button
         @click="allProjects, viewPage(0)"
         class="py-2.5 mb-2 mr-2 border button button-primary hover:bg-gray-700"
-      ><?php esc_html_e( 'Homes', 'fire');?></button>
+      ><?php esc_html_e( 'By Homes', 'fire');?></button>
       <?php if ($terms): ?>
         <?php foreach ($terms as $term):?>
           <button
@@ -35,23 +39,25 @@
     </div>
     <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
       <!-- BASE GALLERY OF HOMES -->
-      <template x-for="index in size" :key="index" >
+      <template x-for="index in size" :key="index" x-show="currentTerm !== 'specific-home'">
         <button
           x-show="gallery[index - 1]"
-          @click="clickHome(gallery[index - 1]?.id)"
-          class="block w-full overflow-hidden duration-500 rounded-lg aspect-w-7 aspect-h-5"
+          @click="clickImage(gallery[index - 1]?.id, [index - 1])"
+          class="block w-full overflow-hidden transition-all duration-200 delay-100 rounded-lg aspect-w-7 aspect-h-5"
+          :class="{'opacity-0 duration-0 delay-0' : loading}"
         >
-          <img class="object-cover w-full h-full" :src="gallery[index - 1]?.acf?.featured_image.url" loading="lazy" :alt="gallery[index - 1]?.acf?.featured_image.alt" width="500" :height="500"/>
+          <img x-show="getImage(index - 1) !== undefined" class="object-cover w-full h-full" :src="getImage(index - 1)" alt="" width="500" :height="500"/>
         </button>
       </template>
 
-      <template x-for="index in total" :key="index" >
+      <template x-for="index in homeImages" :key="index" x-show="currentTerm === 'specific-home'">
         <button
           x-show="gallery?.acf?.gallery[index - 1]"
           @click="openModal([index - 1])"
-          class="block w-full overflow-hidden duration-500 rounded-lg aspect-w-7 aspect-h-5"
+          class="block w-full overflow-hidden transition-all duration-200 delay-100 rounded-lg aspect-w-7 aspect-h-5"
+          :class="{'opacity-0 duration-0 delay-0' : loading}"
         >
-          <img class="object-cover w-full h-full" :src="gallery?.acf?.gallery[index - 1]?.sizes?.large" loading="lazy" :alt="`image-${index - 1}`" width="700" height="500"/>
+          <img class="object-cover w-full h-full" :src="gallery?.acf?.gallery[index - 1]?.sizes?.large" alt="" width="700" height="500"/>
         </button>
       </template>
     </div>
@@ -119,7 +125,7 @@
       <div x-show="showModal" @click="showModal = false" class="fixed inset-0 w-screen h-screen bg-black bg-opacity-60"></div>
       <div class="flex relative items-center justify-center pointer-events-none h-[80vh] w-[80vw] transition-all duration-200" :class="{'-translate-y-12': !showModal}">
 
-        <div class="absolute bottom-0 flex items-center justify-center w-20 h-8 space-x-4 pointer-events-auto bg-black/60">
+        <div class="absolute bottom-0 items-center justify-center hidden w-20 h-8 space-x-4 pointer-events-auto bg-black/60">
           <button @click="prevImage()">
              <svg
               class="text-white transition-transform duration-200 w-7 h-7 hover:scale-105"
@@ -169,9 +175,7 @@
           modalImage: "",
           currentImage: "",
           currentTerm: "all-homes",
-
-          // allTerms: [],
-          // currentTerms: [],
+          homeImages: 0,
           size: 12,
           offset: 0,
           scrollPosition: 0,
@@ -187,13 +191,21 @@
             this.gallery = this.gallerySrc;
             this.loading = false;
           },
-          async clickHome(id){
-            this.scrollToTop();
-            this.currentTerm = "specific-home";
-            const res = await fetch(`${this.baseEndpoint}/project/${id}`);
-            this.gallery = await res.json();
-            this.size = this.gallery?.acf?.gallery.length;
-            console.log(this.gallery, this.size);
+          async clickImage(id, index){
+            if(this.currentTerm === "all-homes"){
+              this.loading = true;
+              this.scrollToTop();
+              this.currentTerm = "specific-home";
+              this.total = 0;
+              const res = await fetch(`${this.baseEndpoint}/project/${id}`);
+              this.gallery = await res.json();
+              this.homeImages = this.gallery?.acf?.gallery.length;
+              this.loading = false;
+            } else {
+              this.currentImage = index;
+              this.modalImage = this.gallery[index]?.media_details?.sizes?.large?.source_url
+              this.showModal = true;
+            }
           },
           scrollToTop(){
             window.scrollTo({
@@ -230,14 +242,9 @@
             this.modalImage = this.gallery?.acf?.gallery[img]?.sizes?.modal;
             this.showModal = true;
           },
-          viewPage(index) {
-            this.scrollToTop();
-            this.$el.blur();
-            this.pageNumber = index;
-          },
           prevImage(){
             if(this.currentImage === 0){
-              this.currentImage = this.total - 1;
+              this.currentImage = this.homeImages - 1;
             } else {
               this.currentImage--;
             }
@@ -245,13 +252,12 @@
           },
           nextImage(){
             this.currentImage++;
-            if(this.currentImage === this.total){
+            if(this.currentImage === this.homeImages){
               this.currentImage = 0;
             }
             this.modalImage = this.gallery?.acf?.gallery[this.currentImage]?.sizes?.modal;
           },
           getImage(id){
-            console.log(id);
             return this.currentTerm === "all-homes" ? this.gallery[id]?.acf?.featured_image.url : this.gallery[id]?.media_details?.sizes?.large?.source_url;
           },
           async viewPage(index) {
@@ -260,29 +266,32 @@
             this.scrollToTop();
             this.pageNumber = index;
 
-            if(this.currentTerm = "all-homes"){
-
-            } else if(''){
+            if(this.currentTerm === "all-homes"){
               const res = await fetch(`${this.baseEndpoint}/project?per_page=${this.size}&offset=${(index * this.size)}`);
+              this.gallery = await res.json();
+              this.loading = false;
             } else {
-              const res = await fetch(`${this.baseEndpoint}/project?per_page=${this.size}&offset=${(index * this.size)}`);
+              const res = await fetch(`${this.baseEndpoint}/media?per_page=${this.size}&filter[image-tags]=${this.currentTerm}&offset=${(index * this.size)}`);
+              this.gallery = await res.json();
+              this.total = await parseInt(res.headers.get('X-WP-Total'));
+              this.loading = false;
             }
-
-            this.gallery = await res.json();
-            this.loading = false;
           },
           async allProjects(){
-            this.currentTerm = "special-home";
+            this.loading = true;
+            this.currentTerm = "all-homes";
             const res = await fetch(`${this.baseEndpoint}/project?per_page=${this.size}`);
             this.gallery = await res.json();
             this.total = await parseInt(res.headers.get('X-WP-Total'));
             this.loading = false;
           },
           async byTerms(slug){
-            // const res = await fetch(`${this.baseEndpoint}/media?per_page=${this.size}&filter[image-tags]=closet`);
-            // this.gallery = await res.json();
-            // this.total = await parseInt(res.headers.get('X-WP-Total'));
-            // this.loading = false;
+            this.loading = true;
+            this.currentTerm = slug;
+            const res = await fetch(`${this.baseEndpoint}/media?per_page=${this.size}&filter[image-tags]=${slug}`);
+            this.gallery = await res.json();
+            this.total = await parseInt(res.headers.get('X-WP-Total'));
+            this.loading = false;
           }
         }
       }

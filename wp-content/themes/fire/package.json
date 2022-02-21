@@ -39,7 +39,7 @@
     "@alpinejs/intersect": "^3.8.1",
     "@babel/polyfill": "^7.8.7",
     "@tailwindcss/aspect-ratio": "^0.4.0",
-    "@tailwindcss/forms": "^0.3.2",
+    "@tailwindcss/forms": "^0.3.4",
     "@tailwindcss/line-clamp": "^0.3.1",
     "alpinejs": "^3.2.1",
     "balance-text": "^3.3.0",
