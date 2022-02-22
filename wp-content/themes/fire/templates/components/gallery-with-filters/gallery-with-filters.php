@@ -54,7 +54,7 @@
           class="block w-full overflow-hidden transition-all duration-200 delay-100 rounded-lg aspect-w-7 aspect-h-5"
           :class="{'opacity-0 duration-0 delay-0' : loading}"
         >
-          <img x-show="getImage(index - 1) !== undefined" class="object-cover w-full h-full" :src="getImage(index - 1)" alt="" width="500" :height="500"/>
+          <img x-show="getImage(index - 1)" class="object-cover w-full h-full" :src="getImage(index - 1)" alt="" width="500" :height="500"/>
         </button>
       </template>
 
@@ -296,7 +296,7 @@
           async byTerms(slug){
             this.loading = true;
             this.currentTerm = slug;
-            const res = await fetch(`${this.baseEndpoint}/media?per_page=${this.size}&filter[image-tags]=${slug}`);
+            const res = await fetch(`${this.baseEndpoint}/media?per_page=${this.size}&filter[image-tags]=${this.currentTerm}`);
             this.gallery = await res.json();
             this.total = await parseInt(res.headers.get('X-WP-Total'));
             this.loading = false;
