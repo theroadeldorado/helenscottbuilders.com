@@ -26,6 +26,12 @@
   <meta name="theme-color" content="#ffffff">
 
   <?php wp_head(); ?>
+
+  <style>
+    [x-cloak] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body <?php body_class(); ?>>

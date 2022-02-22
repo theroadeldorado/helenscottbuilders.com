@@ -17,25 +17,33 @@
 ?>
 
 <?php $section->start(); ?>
-
-
-
-
+  <div class="delay-100 delay-[125ms] delay-[150ms] delay-[175ms] delay-[200ms] delay-[225ms] delay-[250ms] delay-[275ms] delay-[300ms] delay-[325ms] delay-[350ms] delay-[375ms] delay-[400ms] delay-[425ms] delay-[450ms] delay-[475ms] delay-[500ms] delay-[525ms] delay-[550ms] delay-[575ms] delay-[600ms] delay-[625ms] delay-[650ms] delay-[675ms] delay-[700ms] delay-[725ms] delay-[750ms] delay-[775ms] delay-[800ms] delay-[825ms] delay-[850ms] delay-[875ms] delay-[900ms] delay-[925ms] delay-[950ms] delay-[975ms] delay-[1000ms] delay-[1025ms] delay-[1050ms] delay-[1075ms] delay-[1100ms] delay-[1125ms] delay-[1150ms] delay-[1175ms] delay-[1200ms] delay-[1225ms] delay-[1250ms] delay-[1275ms] delay-[1300ms] delay-[1325ms] delay-[1350ms] delay-[1375ms] delay-[1400ms] delay-[1425ms] delay-[1450ms] delay-[1475ms] delay-[1500ms] delay-[1525ms] delay-[1550ms] delay-[1575ms] delay-[1600ms] delay-[1625ms] delay-[1650ms] delay-[1675ms] delay-[1700ms]"></div>
 
   <div class="px-4" x-data="galleryDisplay" x-ref="gallerySection">
-    <div class="container flex flex-wrap items-start py-4">
-      <button
-        @click="allProjects, viewPage(0)"
-        class="py-2.5 mb-2 mr-2 border button button-primary hover:bg-gray-700"
-      ><?php esc_html_e( 'By Homes', 'fire');?></button>
-      <?php if ($terms): ?>
-        <?php foreach ($terms as $term):?>
-          <button
-            @click="byTerms('<?php echo $term->slug; ?>'),viewPage(0)"
-            class="py-2.5 mb-2 mr-2 border button button-primary hover:bg-gray-700"
-          ><?php echo $term->name; ?></button>
-        <?php endforeach; ?>
-      <?php endif;?>
+    <div class="px-4 py-4 text-center" x-cloak x-data="{filters: false}">
+      <button @click="filters = ! filters" class="py-2.5 px-4 mb-6 text-[16px] button button-outline">
+        <span x-text="filters ? 'Show Filters' : 'Hide Filters'"></span>
+      </button>
+      <div class="flex flex-wrap items-center justify-center">
+        <button
+          @click="allProjects, viewPage(0)"
+          :class="{'opacity-0 pointer-events-none translate-x-4 -translate-y-4': !filters}"
+          class="py-1.5 rounded-[4px] px-2 mb-2 mr-2 text-[14px] button button-primary hover:bg-gray-700"
+        ><?php esc_html_e( 'By Homes', 'fire');?></button>
+        <?php $counter = 100; if ($terms):  ?>
+          <?php foreach ($terms as $term): $counter = $counter + 25;?>
+            <button
+              x-show="filters"
+              x-transition:enter="transition ease-out duration-100 delay-[<?php echo $counter;?>ms]" x-transition:enter-start="opacity-0 transform translate-x-6 translate-y-6"
+              x-transition:enter-end="opacity-100 transform translate-x-0 -translate-y-0"
+              x-transition:leave="transition ease-in duration-100 delay-[0ms]" x-transition:leave-start="opacity-100 transform translate-x-0 translate-y-0"
+              x-transition:leave-end="opacity-0"
+              @click="byTerms('<?php echo $term->slug; ?>'),viewPage(0)"
+              class="py-1.5 rounded-[4px] px-2 mb-2 mr-2 text-[14px] button button-primary hover:bg-gray-700 transition-all duration-200"
+            ><?php echo $term->name; ?></button>
+          <?php endforeach; ?>
+        <?php endif;?>
+      </div>
     </div>
     <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
       <!-- BASE GALLERY OF HOMES -->

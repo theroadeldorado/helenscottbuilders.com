@@ -25,10 +25,6 @@
     @apply my-6;
   }
 
-  [x-cloak] {
-    display: none;
-  }
-
   .home {
     .section--hero.section--1 {
       @apply mt-[-105px];
