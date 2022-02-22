@@ -20,10 +20,10 @@
   <div class="delay-100 delay-[125ms] delay-[150ms] delay-[175ms] delay-[200ms] delay-[225ms] delay-[250ms] delay-[275ms] delay-[300ms] delay-[325ms] delay-[350ms] delay-[375ms] delay-[400ms] delay-[425ms] delay-[450ms] delay-[475ms] delay-[500ms] delay-[525ms] delay-[550ms] delay-[575ms] delay-[600ms] delay-[625ms] delay-[650ms] delay-[675ms] delay-[700ms] delay-[725ms] delay-[750ms] delay-[775ms] delay-[800ms] delay-[825ms] delay-[850ms] delay-[875ms] delay-[900ms] delay-[925ms] delay-[950ms] delay-[975ms] delay-[1000ms] delay-[1025ms] delay-[1050ms] delay-[1075ms] delay-[1100ms] delay-[1125ms] delay-[1150ms] delay-[1175ms] delay-[1200ms] delay-[1225ms] delay-[1250ms] delay-[1275ms] delay-[1300ms] delay-[1325ms] delay-[1350ms] delay-[1375ms] delay-[1400ms] delay-[1425ms] delay-[1450ms] delay-[1475ms] delay-[1500ms] delay-[1525ms] delay-[1550ms] delay-[1575ms] delay-[1600ms] delay-[1625ms] delay-[1650ms] delay-[1675ms] delay-[1700ms]"></div>
 
   <div class="px-4" x-data="galleryDisplay" x-ref="gallerySection">
-    <div class="px-4 py-4 text-center" x-cloak x-data="{filters: false}">
-      <button @click="filters = ! filters" class="py-2.5 px-4 mb-6 text-[16px] button button-outline">
+    <div class="px-4 py-4 text-center" x-cloak x-data="{filters: true}">
+      <!-- <button @click="filters = ! filters" class="py-2.5 px-4 mb-6 text-[16px] button button-outline">
         <span x-text="filters ? 'Hide Filters' : 'Show Filters'"></span>
-      </button>
+      </button> -->
       <div class="flex flex-wrap items-center justify-center">
         <button
           @click="allProjects, viewPage(0)"
