@@ -13,7 +13,7 @@
   <div class="relative bg-black z-1 bg-opacity-20">
     <div class="container px-4 mx-auto">
       <div class="pt-16 text-center pb-14 lg:pt-40 lg:pb-36 hero__content">
-        <div class="max-w-lg mx-auto mb-8 text-white wizzy">
+        <div class="max-w-2xl mx-auto mb-8 text-white wizzy">
           <?php print $copy; ?>
         </div>
       </div>
