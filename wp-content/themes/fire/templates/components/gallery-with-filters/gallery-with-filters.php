@@ -22,7 +22,7 @@
   <div class="px-4" x-data="galleryDisplay" x-ref="gallerySection">
     <div class="px-4 py-4 text-center" x-cloak x-data="{filters: false}">
       <button @click="filters = ! filters" class="py-2.5 px-4 mb-6 text-[16px] button button-outline">
-        <span x-text="filters ? 'Show Filters' : 'Hide Filters'"></span>
+        <span x-text="filters ? 'Hide Filters' : 'Show Filters'"></span>
       </button>
       <div class="flex flex-wrap items-center justify-center">
         <button
