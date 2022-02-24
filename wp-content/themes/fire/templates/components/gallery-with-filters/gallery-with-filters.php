@@ -170,10 +170,7 @@
       </div>
     </div>
   </div>
-
-
-
-   <script>
+  <script>
       function galleryDisplay() {
         return {
           showModal: false,
@@ -198,6 +195,7 @@
             this.total = await parseInt(res.headers.get('X-WP-Total'));
             this.gallery = this.gallerySrc;
             this.loading = false;
+            console.log(this.gallery);
           },
           async clickImage(id, index){
             if(this.currentTerm === "all-homes"){
