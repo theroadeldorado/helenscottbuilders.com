@@ -9,7 +9,6 @@
 ?>
 
 <?php $section->start(); ?>
-
   <div class="container px-4 mx-auto">
     <div class="max-w-lg mx-auto mb-12 text-center">
       <?php if($title):?>
@@ -26,16 +25,11 @@
           $counter++;
           $project = get_sub_field('project');
           $project_image = get_field('featured_image', $project->ID); ?>
-
-          <div class="aspect-square <?php echo $counter === 3 || $counter === 6 ? 'lg:col-span-2 lg:row-span-2' : '';?>">
-            <img class="object-cover w-full h-full rounded-lg" src="<?php echo $project_image['url'];?>" alt=""/>
-          </div>
-
+          <a href="<?php the_permalink($project->ID);?>" class="block hover:shadow-lg border border-transparent hover:border-gray-300 group transition-all duration-200 rounded-lg overflow-hidden aspect-square <?php echo $counter === 3 || $counter === 6 ? 'lg:col-span-2 lg:row-span-2' : '';?>">
+            <img class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" src="<?php echo $project_image['url'];?>" alt=""/>
+          </a>
         <?php endwhile;
       endif; ?>
     </div>
-    <!-- <div class="mx-auto text-center"><a class="button button-primary" href="#">View All Projects</a></div> -->
   </div>
-
-
 <?php $section->end(); ?>

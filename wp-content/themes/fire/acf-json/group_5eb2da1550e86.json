@@ -422,7 +422,7 @@
                 "layout_61f210d4f383c": {
                     "key": "layout_61f210d4f383c",
                     "name": "testimonial",
-                    "label": "Testimonial",
+                    "label": "Testimonial - Single with Image (short)",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -440,6 +440,37 @@
                             },
                             "clone": [
                                 "group_61f20fd8d5d3f"
+                            ],
+                            "display": "seamless",
+                            "layout": "",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_6216bef5d6ed2": {
+                    "key": "layout_6216bef5d6ed2",
+                    "name": "testimonials-slider",
+                    "label": "Testimonials - Slider",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6216bef5d6ed3",
+                            "label": "Testimonials - Slider",
+                            "name": "testimonials-slider",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_6216be162b38c"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -543,5 +574,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1644376850
+    "modified": 1645657878
 }
