@@ -86,6 +86,7 @@
                 <?php echo $contact['title'] ? $contact['title'] : 'Contact Us'; ?>
               </a>
             <?php endif; ?>
+
           </div>
         </div>
         <?php
@@ -101,7 +102,7 @@
           );
         ?>
 
-        <div class="hidden space-x-2 lg:block">
+        <div class="items-center justify-end hidden space-x-2 lg:flex">
           <?php if($client_login): ?>
             <a class="button button-outline" href="<?php echo $client_login['url']; ?>" target="<?php echo $client_login['target']?>">
               <?php echo $client_login['title'] ? $client_login['title'] : 'Client Log In'; ?>
@@ -113,6 +114,19 @@
               <?php echo $contact['title'] ? $contact['title'] : 'Contact Us'; ?>
             </a>
           <?php endif; ?>
+
+          <?php
+            $social = get_field('social_links', 'site_settings');
+            $facebook = $social['facebook'] ? $social['facebook'] : null;
+            if($facebook): ?>
+              <a class="px-3 py-3 button button-primary" target="_blank" href="<?php echo $facebook;?>">
+                <span class="w-[24px] h-auto">
+                <?php new Fire_SVG('icon--social-facebook'); ?>
+                </span>
+                <span class="sr-only">Facebook</span>
+              </a>
+            <?php endif;?>
+
         </div>
       </nav>
     </div>

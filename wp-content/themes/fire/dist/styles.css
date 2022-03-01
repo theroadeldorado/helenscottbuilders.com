@@ -1219,6 +1219,9 @@ a:focus-visible {
 .w-full {
   width: 100%;
 }
+.w-\[24px\] {
+  width: 24px;
+}
 .w-32 {
   width: 8rem;
 }
@@ -1459,6 +1462,9 @@ a:focus-visible {
 }
 .items-center {
   align-items: center;
+}
+.justify-end {
+  justify-content: flex-end;
 }
 .justify-center {
   justify-content: center;
@@ -1708,6 +1714,10 @@ a:focus-visible {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 .py-20 {
   padding-top: 5rem;
