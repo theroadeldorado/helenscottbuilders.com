@@ -1,6 +1,7 @@
 <?php
   $quotes = get_sub_field('testimonials') ? get_sub_field('testimonials') : [] ;
   $total = count($quotes);
+  $title = get_sub_field('title');
 
   $section->add_classes([
     'py-20 pb-8 overflow-x-hidden relative bg-gray-100'
@@ -11,28 +12,33 @@
 <div x-data="quoteSlider()">
   <div class="absolute w-72 top-4 left-8 opacity-5"><?php new Fire_SVG('quote'); ?></div>
 
-  <div class="container grid px-4 mx-auto" >
-    <?php if( have_rows('testimonials') ): $count = 0;
-      while ( have_rows('testimonials') ) : the_row();
-        $quote = get_sub_field('quote');
-        $name = get_sub_field('name');?>
-        <div
-          class="flex flex-col items-center justify-center col-span-1 col-start-1 row-span-1 row-start-1 transition-all duration-500" :class="{'pointer-events-none': activeSlide !== <?php echo $count; ?>}"
-        >
-          <h2
-            class="my-4 text-lg transition-all duration-500 font-heading wizzy"
-            :class="{' opacity-0 pointer-events-none translate-y-8': activeSlide !== <?php echo $count; ?>}"
-          ><?php echo $quote;?></h2>
-          <?php if($name):?>
-            <p
-              class="w-full pl-4 text-xl font-bold text-left text-red-600 transition-all duration-500"
-              :class="{'opacity-0 pointer-events-none delay-150 -translate-y-6': activeSlide !== <?php echo $count; ?>}"
-            > - <?php echo $name;?></p>
-          <?php endif;?>
-        </div>
-        <?php $count++;
-      endwhile;
-    endif; ?>
+  <div class="container px-4 mx-auto" >
+    <?php if($title):?>
+      <h2 class="mb-6 text-3xl font-bold text-center text-red-600 lg:mb-8 md:text-4xl font-heading"><?php echo $title;?></h2>
+    <?php endif;?>
+    <div class="grid">
+      <?php if( have_rows('testimonials') ): $count = 0;
+        while ( have_rows('testimonials') ) : the_row();
+          $quote = get_sub_field('quote');
+          $name = get_sub_field('name');?>
+          <div
+            class="flex flex-col items-center justify-center col-span-1 col-start-1 row-span-1 row-start-1 transition-all duration-500" :class="{'pointer-events-none': activeSlide !== <?php echo $count; ?>}"
+          >
+            <h2
+              class="my-4 text-lg transition-all duration-500 font-heading wizzy"
+              :class="{' opacity-0 pointer-events-none translate-y-8': activeSlide !== <?php echo $count; ?>}"
+            ><?php echo $quote;?></h2>
+            <?php if($name):?>
+              <p
+                class="w-full pl-4 text-xl font-bold text-left text-red-600 transition-all duration-500"
+                :class="{'opacity-0 pointer-events-none delay-150 -translate-y-6': activeSlide !== <?php echo $count; ?>}"
+              > - <?php echo $name;?></p>
+            <?php endif;?>
+          </div>
+          <?php $count++;
+        endwhile;
+      endif; ?>
+    </div>
   </div>
 
   <div class="flex items-center justify-center w-full py-4 space-x-4">
