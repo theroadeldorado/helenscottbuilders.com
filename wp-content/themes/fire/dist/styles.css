@@ -937,11 +937,11 @@ a:focus-visible {
 .z-\[1\] {
   z-index: 1;
 }
-.z-\[10002\] {
-  z-index: 10002;
-}
 .z-0 {
   z-index: 0;
+}
+.z-\[10002\] {
+  z-index: 10002;
 }
 .order-first {
   order: -9999;
@@ -1180,6 +1180,9 @@ a:focus-visible {
 .h-80 {
   height: 20rem;
 }
+.h-\[150px\] {
+  height: 150px;
+}
 .h-8 {
   height: 2rem;
 }
@@ -1201,26 +1204,8 @@ a:focus-visible {
 .h-\[550px\] {
   height: 550px;
 }
-.h-9 {
-  height: 2.25rem;
-}
-.h-4 {
-  height: 1rem;
-}
-.h-52 {
-  height: 13rem;
-}
-.h-40 {
-  height: 10rem;
-}
-.h-\[150px\] {
-  height: 150px;
-}
 .max-h-full {
   max-height: 100%;
-}
-.max-h-12 {
-  max-height: 3rem;
 }
 .w-40 {
   width: 10rem;
@@ -1282,11 +1267,11 @@ a:focus-visible {
 .w-3\/4 {
   width: 75%;
 }
-.w-\[300px\] {
-  width: 300px;
-}
 .max-w-2xl {
   max-width: 42rem;
+}
+.max-w-\[220px\] {
+  max-width: 220px;
 }
 .max-w-lg {
   max-width: 32rem;
@@ -1311,12 +1296,6 @@ a:focus-visible {
 }
 .max-w-\[300px\] {
   max-width: 300px;
-}
-.max-w-\[250px\] {
-  max-width: 250px;
-}
-.max-w-\[220px\] {
-  max-width: 220px;
 }
 .shrink-0 {
   flex-shrink: 0;
@@ -1502,17 +1481,17 @@ a:focus-visible {
 .gap-6 {
   gap: 1.5rem;
 }
-.gap-12 {
-  gap: 3rem;
-}
-.gap-4 {
-  gap: 1rem;
-}
 .gap-0\.5 {
   gap: 0.125rem;
 }
 .gap-0 {
   gap: 0px;
+}
+.gap-12 {
+  gap: 3rem;
+}
+.gap-4 {
+  gap: 1rem;
 }
 .space-x-0 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1788,14 +1767,6 @@ a:focus-visible {
   padding-left: 2rem;
   padding-right: 2rem;
 }
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
 .pt-16 {
   padding-top: 4rem;
 }
@@ -1908,9 +1879,6 @@ a:focus-visible {
 }
 .tracking-wide {
   letter-spacing: 0.025em;
-}
-.tracking-wider {
-  letter-spacing: 0.05em;
 }
 .text-red-600 {
   --tw-text-opacity: 1;
@@ -2312,10 +2280,6 @@ a:focus-visible {
   .sm\:hidden {
     display: none;
   }
-  .sm\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
   .sm\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -2491,6 +2455,10 @@ a:focus-visible {
     font-size: 3rem;
     line-height: 1;
   }
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -2498,10 +2466,6 @@ a:focus-visible {
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-  .md\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
   }
   .md\:text-base {
     font-size: 1rem;
@@ -2760,14 +2724,6 @@ a:focus-visible {
   .lg\:py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem;
-  }
-  .lg\:py-16 {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-  .lg\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
   }
   .lg\:pr-16 {
     padding-right: 4rem;
