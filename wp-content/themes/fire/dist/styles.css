@@ -969,6 +969,10 @@ a:focus-visible {
   margin-left: 1rem;
   margin-right: 1rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .-mx-2 {
   margin-left: -0.5rem;
   margin-right: -0.5rem;
@@ -992,10 +996,6 @@ a:focus-visible {
 .mx-6 {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-}
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 .mt-gap-0 {
   margin-top: 0;
@@ -2454,14 +2454,6 @@ a:focus-visible {
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-  .md\:justify-end {
-    justify-content: flex-end;
-  }
-  .md\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
-  }
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -2495,6 +2487,10 @@ a:focus-visible {
   }
   .lg\:row-span-2 {
     grid-row: span 2 / span 2;
+  }
+  .lg\:my-0 {
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   .lg\:my-10 {
     margin-top: 2.5rem;
@@ -2716,6 +2712,11 @@ a:focus-visible {
     --tw-space-x-reverse: 0;
     margin-right: calc(2rem * var(--tw-space-x-reverse));
     margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+  .lg\:space-x-5 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
   }
   .lg\:space-x-12 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
