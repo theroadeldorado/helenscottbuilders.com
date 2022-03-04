@@ -60,22 +60,26 @@
       </div>
       <div class="flex flex-col items-center lg:flex-row lg:justify-between">
         <p class="text-xs text-gray-700">©Helen Scott Custom Builders, Inc 2021. All rights reserved.</p>
-        <div class="flex items-center order-first mb-4 -mx-2 space-x-4 lg:order-last lg:mb-0">
-          <?php
-            $social_links = get_field('social_links', 'site_settings');
-            if (empty($social_links)) {
-              return;
-            }
-            foreach ($social_links as $platform => $link) {
-              if($link):?>
-                <a class="h-5 w-5 flex items-center justify-center no-underline text-red-600 hover:text-red-900 duration-200 transition-all <?php echo $social_link_classes ? $social_link_classes : '';?>" target="_blank" href="<?php echo $link;?>">
-                  <?php new Fire_SVG('icon--social-' . $platform); ?>
-                  <span class="sr-only"><?php echo $platform; ?></span>
-                </a>
-              <?php
-              endif;
-            }
-          ?>
+
+        <div class="md:space-x-6">
+          <img src="<?php echo get_theme_file_path('theme/assets/media/images/hba.jpg');?>" alt="hba" loading="lazy" class="w-24">
+          <div class="flex items-center order-first mb-4 -mx-2 space-x-4 lg:order-last lg:mb-0">
+            <?php
+              $social_links = get_field('social_links', 'site_settings');
+              if (empty($social_links)) {
+                return;
+              }
+              foreach ($social_links as $platform => $link) {
+                if($link):?>
+                  <a class="h-5 w-5 flex items-center justify-center no-underline text-red-600 hover:text-red-900 duration-200 transition-all <?php echo $social_link_classes ? $social_link_classes : '';?>" target="_blank" href="<?php echo $link;?>">
+                    <?php new Fire_SVG('icon--social-' . $platform); ?>
+                    <span class="sr-only"><?php echo $platform; ?></span>
+                  </a>
+                <?php
+                endif;
+              }
+            ?>
+          </div>
         </div>
       </div>
     </div>

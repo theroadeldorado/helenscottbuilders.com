@@ -1210,6 +1210,9 @@ a:focus-visible {
 .w-40 {
   width: 10rem;
 }
+.w-24 {
+  width: 6rem;
+}
 .w-5 {
   width: 1.25rem;
 }
@@ -2451,6 +2454,11 @@ a:focus-visible {
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .md\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -2584,6 +2592,9 @@ a:focus-visible {
   }
   .lg\:hidden {
     display: none;
+  }
+  .lg\:w-32 {
+    width: 8rem;
   }
   .lg\:w-auto {
     width: auto;
