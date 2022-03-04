@@ -62,7 +62,7 @@
         <p class="text-xs text-gray-700">©Helen Scott Custom Builders, Inc 2021. All rights reserved.</p>
 
         <div class="md:space-x-6">
-          <img src="<?php echo get_template_directory_uri('theme/assets/media/images/hba.jpg');?>" alt="hba" loading="lazy" class="w-24">
+          <img src="<?php echo get_template_directory_uri('');?>/theme/assets/media/images/hba.jpg" alt="hba" loading="lazy" class="w-24">
           <div class="flex items-center order-first mb-4 -mx-2 space-x-4 lg:order-last lg:mb-0">
             <?php
               $social_links = get_field('social_links', 'site_settings');
