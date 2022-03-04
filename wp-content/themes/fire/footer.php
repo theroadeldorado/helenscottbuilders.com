@@ -14,7 +14,7 @@
   <footer class="py-16 bg-gray-100 ">
     <div class="container px-4 mx-auto">
       <div class="flex flex-col mb-10 lg:flex-row">
-        <a class="inline-block mx-auto mb-10 text-3xl font-semibold leading-none text-red-600 lg:mb-0 lg:ml-0 lg:mr-auto" href="#">
+        <a class="inline-block mx-auto mb-10 text-3xl font-semibold leading-none text-red-600 lg:mb-0 lg:ml-0 lg:mr-auto" href="<?php echo esc_url( home_url( '/' ) ); ?>">
           <span class="block w-40 h-16">
             <svg viewbox="0 0 478 196" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path d="M43 158.848v-44.799h1.792v21.375h28.544v-21.375h1.984c0 7.508-.022 14.974-.064 22.399l-.128 22.4h-1.792v-21.696H44.792v21.696H43" class="fill-black"/>
@@ -59,7 +59,7 @@
 
       </div>
       <div class="flex flex-col items-center lg:flex-row lg:justify-between">
-        <p class="text-xs text-gray-700">©Helen Scott Custom Builders, Inc <?php the_date('Y'); ?>. All rights reserved.</p>
+        <p class="text-xs text-gray-700">©Helen Scott Custom Builders, Inc <?php echo date('Y'); ?>. All rights reserved.</p>
 
         <div class="items-center lg:flex lg:space-x-5">
           <img src="<?php echo get_template_directory_uri('');?>/theme/assets/media/images/hba.jpg" alt="hba" loading="lazy" class="block w-24 mx-auto my-4 lg:my-0">
