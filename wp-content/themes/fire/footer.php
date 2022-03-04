@@ -59,7 +59,7 @@
 
       </div>
       <div class="flex flex-col items-center lg:flex-row lg:justify-between">
-        <p class="text-xs text-gray-700">©Helen Scott Custom Builders, Inc <?php echo the_date('Y');?>. All rights reserved.</p>
+        <p class="text-xs text-gray-700">©Helen Scott Custom Builders, Inc <?php the_date('Y'); ?>. All rights reserved.</p>
 
         <div class="items-center lg:flex lg:space-x-5">
           <img src="<?php echo get_template_directory_uri('');?>/theme/assets/media/images/hba.jpg" alt="hba" loading="lazy" class="block w-24 mx-auto my-4 lg:my-0">
