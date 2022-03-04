@@ -61,7 +61,7 @@
       <div class="flex flex-col items-center lg:flex-row lg:justify-between">
         <p class="text-xs text-gray-700">©Helen Scott Custom Builders, Inc 2021. All rights reserved.</p>
 
-        <div class="md:space-x-6">
+        <div class="flex items-center justify-center md:space-x-6 md:justify-end ">
           <img src="<?php echo get_template_directory_uri('');?>/theme/assets/media/images/hba.jpg" alt="hba" loading="lazy" class="w-24">
           <div class="flex items-center order-first mb-4 -mx-2 space-x-4 lg:order-last lg:mb-0">
             <?php

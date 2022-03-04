@@ -2454,6 +2454,9 @@ a:focus-visible {
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .md\:justify-end {
+    justify-content: flex-end;
+  }
   .md\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(1.5rem * var(--tw-space-x-reverse));
@@ -2592,9 +2595,6 @@ a:focus-visible {
   }
   .lg\:hidden {
     display: none;
-  }
-  .lg\:w-32 {
-    width: 8rem;
   }
   .lg\:w-auto {
     width: auto;
