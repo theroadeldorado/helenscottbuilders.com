@@ -1,158 +1,4 @@
 /* base */
-.prose {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-.wizzy h1, .wizzy h2, .wizzy h3, .wizzy h4, .wizzy h5, .wizzy h6, .wizzy p, .wizzy ul, .wizzy ol, .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6, .prose p, .prose ul, .prose ol {
-  margin-bottom: 1.5rem;
-}
-.wizzy h1:last-child, .wizzy h2:last-child, .wizzy h3:last-child, .wizzy h4:last-child, .wizzy h5:last-child, .wizzy h6:last-child, .wizzy p:last-child, .wizzy ul:last-child, .wizzy ol:last-child, .prose h1:last-child, .prose h2:last-child, .prose h3:last-child, .prose h4:last-child, .prose h5:last-child, .prose h6:last-child, .prose p:last-child, .prose ul:last-child, .prose ol:last-child {
-  margin-bottom: 0px;
-}
-.wizzy a :not(.button) :not(.link), .prose a :not(.button) :not(.link) {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
-}
-.wizzy a :not(.button) :not(.link):hover, .prose a :not(.button) :not(.link):hover {
-  --tw-text-opacity: 1;
-  color: rgb(153 27 27 / var(--tw-text-opacity));
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
-}
-.wizzy ul, .prose ul {
-  margin-left: 1rem;
-  list-style-type: disc;
-  padding-left: 0.5rem;
-}
-.wizzy ol, .prose ol {
-  margin-left: 1rem;
-  list-style-type: decimal;
-  padding-left: 0.5rem;
-}
-.wizzy iframe, .prose iframe {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-}
-.wizzy .aligncenter, .prose .aligncenter {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  max-width: 100%;
-}
-.wizzy .alignright, .prose .alignright {
-  float: right;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  margin-left: 1.5rem;
-}
-.wizzy .alignleft, .prose .alignleft {
-  float: left;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  margin-right: 1.5rem;
-}
-.wizzy iframe, .prose iframe {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-}
-.prose .button-outline-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-}
-#primary-menu .menu-item-has-children {
-  position: relative;
-}
-@media (min-width: 992px) {
-  #primary-menu .menu-item-has-children:hover .sub-menu, #primary-menu .menu-item-has-children:focus .sub-menu {
-    pointer-events: auto;
-  }
-  #primary-menu .menu-item-has-children:hover .sub-menu, #primary-menu .menu-item-has-children:focus .sub-menu {
-    opacity: 1;
-  }
-}
-#primary-menu .menu-item-has-children .sub-menu {
-  position: relative;
-}
-@media (min-width: 992px) {
-  #primary-menu .menu-item-has-children .sub-menu {
-    pointer-events: none;
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    position: absolute;
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    top: 60.5px;
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    left: -1rem;
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    width: 165px;
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    border-top-width: 2px;
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    --tw-border-opacity: 1;
-    border-color: rgb(220 38 38 / var(--tw-border-opacity));
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    background-color: rgb(255 255 255 / 0.8);
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    opacity: 0;
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-  }
-  #primary-menu .menu-item-has-children .sub-menu {
-    transition-duration: 200ms;
-  }
-  #primary-menu .menu-item-has-children .sub-menu::before {
-    content: var(--tw-content);
-    position: absolute;
-  }
-  #primary-menu .menu-item-has-children .sub-menu::before {
-    content: var(--tw-content);
-    top: -38px;
-  }
-  #primary-menu .menu-item-has-children .sub-menu::before {
-    content: var(--tw-content);
-    left: 0px;
-  }
-  #primary-menu .menu-item-has-children .sub-menu::before {
-    content: var(--tw-content);
-    height: 38px;
-  }
-  #primary-menu .menu-item-has-children .sub-menu::before {
-    content: var(--tw-content);
-    width: 100%;
-  }
-  #primary-menu .menu-item-has-children .sub-menu li {
-    display: block;
-  }
-  #primary-menu .menu-item-has-children .sub-menu li {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-}
-#mobile-menu .sub-menu {
-  margin-top: 1rem;
-}
-/* components */
-/* libs */
 /* ! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com */
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -640,6 +486,159 @@ h1, h2, h3, h4, h5, h6 {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.prose {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.wizzy h1, .wizzy h2, .wizzy h3, .wizzy h4, .wizzy h5, .wizzy h6, .wizzy p, .wizzy ul, .wizzy ol, .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6, .prose p, .prose ul, .prose ol {
+  margin-bottom: 1.5rem;
+}
+.wizzy h1:last-child, .wizzy h2:last-child, .wizzy h3:last-child, .wizzy h4:last-child, .wizzy h5:last-child, .wizzy h6:last-child, .wizzy p:last-child, .wizzy ul:last-child, .wizzy ol:last-child, .prose h1:last-child, .prose h2:last-child, .prose h3:last-child, .prose h4:last-child, .prose h5:last-child, .prose h6:last-child, .prose p:last-child, .prose ul:last-child, .prose ol:last-child {
+  margin-bottom: 0px;
+}
+.wizzy a :not(.button) :not(.link), .prose a :not(.button) :not(.link) {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
+}
+.wizzy a :not(.button) :not(.link):hover, .prose a :not(.button) :not(.link):hover {
+  --tw-text-opacity: 1;
+  color: rgb(153 27 27 / var(--tw-text-opacity));
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+.wizzy ul, .prose ul {
+  margin-left: 1rem;
+  list-style-type: disc;
+  padding-left: 0.5rem;
+}
+.wizzy ol, .prose ol {
+  margin-left: 1rem;
+  list-style-type: decimal;
+  padding-left: 0.5rem;
+}
+.wizzy iframe, .prose iframe {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+.wizzy .aligncenter, .prose .aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  max-width: 100%;
+}
+.wizzy .alignright, .prose .alignright {
+  float: right;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-left: 1.5rem;
+}
+.wizzy .alignleft, .prose .alignleft {
+  float: left;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  margin-right: 1.5rem;
+}
+.wizzy iframe, .prose iframe {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+.prose .button-outline-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+#primary-menu .menu-item-has-children {
+  position: relative;
+}
+@media (min-width: 992px) {
+  #primary-menu .menu-item-has-children:hover .sub-menu, #primary-menu .menu-item-has-children:focus .sub-menu {
+    pointer-events: auto;
+  }
+  #primary-menu .menu-item-has-children:hover .sub-menu, #primary-menu .menu-item-has-children:focus .sub-menu {
+    opacity: 1;
+  }
+}
+#primary-menu .menu-item-has-children .sub-menu {
+  position: relative;
+}
+@media (min-width: 992px) {
+  #primary-menu .menu-item-has-children .sub-menu {
+    pointer-events: none;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    position: absolute;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    top: 60.5px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    left: -1rem;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    width: 165px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    border-top-width: 2px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    --tw-border-opacity: 1;
+    border-color: rgb(220 38 38 / var(--tw-border-opacity));
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    background-color: rgb(255 255 255 / 0.8);
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    opacity: 0;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    transition-duration: 200ms;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    position: absolute;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    top: -38px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    left: 0px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    height: 38px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    width: 100%;
+  }
+  #primary-menu .menu-item-has-children .sub-menu li {
+    display: block;
+  }
+  #primary-menu .menu-item-has-children .sub-menu li {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+#mobile-menu .sub-menu {
+  margin-top: 1rem;
+}
+/* components */
 .container {
   width: 100%;
   margin-right: auto;
