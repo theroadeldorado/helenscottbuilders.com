@@ -604,6 +604,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_622e565a101fb": {
+                    "key": "layout_622e565a101fb",
+                    "name": "virtual_tours",
+                    "label": "Virtual Tours",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_622e565a101fc",
+                            "label": "Virtual Tours",
+                            "name": "virtual_tours",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_622e558c51ea7"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Section",
@@ -636,5 +667,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1646357581
+    "modified": 1647204207
 }

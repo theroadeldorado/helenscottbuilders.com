@@ -64,6 +64,93 @@
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
+#primary-menu .menu-item-has-children {
+  position: relative;
+}
+@media (min-width: 992px) {
+  #primary-menu .menu-item-has-children:hover .sub-menu, #primary-menu .menu-item-has-children:focus .sub-menu {
+    pointer-events: auto;
+  }
+  #primary-menu .menu-item-has-children:hover .sub-menu, #primary-menu .menu-item-has-children:focus .sub-menu {
+    opacity: 1;
+  }
+}
+#primary-menu .menu-item-has-children .sub-menu {
+  position: relative;
+}
+@media (min-width: 992px) {
+  #primary-menu .menu-item-has-children .sub-menu {
+    pointer-events: none;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    position: absolute;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    top: 60.5px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    left: -1rem;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    width: 165px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    border-top-width: 2px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    --tw-border-opacity: 1;
+    border-color: rgb(220 38 38 / var(--tw-border-opacity));
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    background-color: rgb(255 255 255 / 0.8);
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    opacity: 0;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  #primary-menu .menu-item-has-children .sub-menu {
+    transition-duration: 200ms;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    position: absolute;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    top: -38px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    left: 0px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    height: 38px;
+  }
+  #primary-menu .menu-item-has-children .sub-menu::before {
+    content: var(--tw-content);
+    width: 100%;
+  }
+  #primary-menu .menu-item-has-children .sub-menu li {
+    display: block;
+  }
+  #primary-menu .menu-item-has-children .sub-menu li {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+#mobile-menu .sub-menu {
+  margin-top: 1rem;
+}
 /* components */
 /* libs */
 /* ! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com */
@@ -1738,6 +1825,10 @@ a:focus-visible {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -1935,14 +2026,14 @@ a:focus-visible {
 .opacity-5 {
   opacity: 0.05;
 }
-.shadow-lg {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow {
@@ -2492,10 +2583,6 @@ a:focus-visible {
     margin-top: 0px;
     margin-bottom: 0px;
   }
-  .lg\:my-10 {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
   .lg\:mt-gap-0 {
     margin-top: 0;
   }
@@ -2728,6 +2815,10 @@ a:focus-visible {
   }
   .lg\:stroke-black {
     stroke: #000;
+  }
+  .lg\:py-14 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
   .lg\:py-20 {
     padding-top: 5rem;

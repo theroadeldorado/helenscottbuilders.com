@@ -43,7 +43,7 @@
 <div id="page" class="site">
   <a class="sr-only skip-link focus:not-sr-only" href="#primary"><?php esc_html_e( 'Skip to content', 'fire' ); ?></a>
 
-  <header class="bg-white/80 relative z-[1000]" x-cloak x-data="toggleNav()">
+  <header class="bg-white/80 shadow-md relative z-[1000]" x-cloak x-data="toggleNav()">
     <div class="container px-4 mx-auto">
       <nav class="flex items-center justify-between py-4">
         <a class="block w-40 h-auto relative z-[2]" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -68,7 +68,7 @@
                 'container'       => 'ul',
                 'menu_id'         => 'mobile-menu',
                 'menu_class'      => 'flex mt-40 flex-col w-full space-y-4',
-                'list_item_class' => 'mx-4',
+                'list_item_class' => 'mx-4 relative',
                 'link_class'      => 'text-[28px] block text-center font-medium w-full no-underline text-white',
                 )
               );

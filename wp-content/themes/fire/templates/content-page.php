@@ -12,7 +12,7 @@
 ?>
   <?php if(!is_front_page() && $block_count === 1 && $layout_type !== 'hero'):?>
     <div class="container text-center">
-      <h1 class="my-8 text-4xl font-medium text-red-600 lg:my-10 lg:text-6xl"><?php the_title();?></h1>
+      <h1 class="py-8 text-4xl font-medium text-red-600 lg:py-14 lg:text-6xl"><?php the_title();?></h1>
     </div>
   <?php endif;?>
 
