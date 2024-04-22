@@ -1949,6 +1949,9 @@ a:focus-visible {
 .uppercase {
   text-transform: uppercase;
 }
+.italic {
+  font-style: italic;
+}
 .leading-none {
   line-height: 1;
 }

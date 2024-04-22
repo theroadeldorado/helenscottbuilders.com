@@ -70,6 +70,8 @@
       </template>
     </div>
 
+    <p x-cloak class="py-6 italic text-center">Click on images to view larger versions.</p>
+
     <div
       class="flex items-center justify-center w-full py-6 mx-auto space-x-2 md:w-1/2"
       x-show="pageCount() > 1"
