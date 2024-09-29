@@ -13,6 +13,9 @@ if ( ! class_exists( 'GFForms' ) ) {
 // Require GFFeedAddOn.
 require_once( 'class-gf-feed-addon.php' );
 
+use \Gravity_Forms\Gravity_Forms\Orders\Factories\GF_Order_Factory;
+use \Gravity_Forms\Gravity_Forms\Orders\Exporters\GF_Save_Entry_Order_Exporter;
+
 /**
  * Class GFPaymentAddOn
  *
@@ -205,7 +208,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 
 		add_filter( 'gform_confirmation', array( $this, 'confirmation' ), 20, 4 );
 
-		add_filter( 'gform_validation', array( $this, 'maybe_validate' ), 20 );
+		add_filter( 'gform_validation', array( $this, 'maybe_validate' ), 20, 2 );
 		add_filter( 'gform_entry_post_save', array( $this, 'entry_post_save' ), 10, 2 );
 
 		if ( $this->_requires_credit_card ) {
@@ -297,14 +300,14 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		if ( $installed_version != $this->_payment_version ) {
 			$this->upgrade_payment( $installed_version );
 
-			$installed_addons = array( $this->_slug );
+			$installed_addons = array( $this->get_slug() );
 			update_option( 'gravityformsaddon_payment_addons', $installed_addons );
 		}
-		elseif ( ! in_array( $this->_slug, $installed_addons ) ) {
+		elseif ( ! in_array( $this->get_slug(), $installed_addons ) ) {
 
 			$this->upgrade_payment( $installed_version );
 
-			$installed_addons[] = $this->_slug;
+			$installed_addons[] = $this->get_slug();
 			update_option( 'gravityformsaddon_payment_addons', $installed_addons );
 		}
 
@@ -415,6 +418,9 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		}
 
 		$payment_feed = $this->current_feed;
+		if ( empty( $payment_feed ) ) {
+			$payment_feed = $this->get_single_submission_feed( $entry, $form );
+		}
 
 		return (bool) rgars( $payment_feed, 'meta/delay_' . $slug );
 	}
@@ -523,33 +529,26 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 	/**
 	 * Check if the rest of the form has passed validation, is the last page, and that the honeypot field has not been completed.
 	 *
-	 * @since  Unknown
-	 * @access public
+	 * @since Unknown
+	 * @since 2.6.4 Added the $context param.
 	 *
-	 * @used-by GFPaymentAddOn::init()
-	 * @uses    GFFormDisplay::is_last_page()
-	 * @uses    GFFormDisplay::get_max_field_id()
-	 * @uses    GFPaymentAddOn::validation()
-	 *
-	 * @param array $validation_result Contains the validation result, the Form Object, and the failed validation page number.
+	 * @param array  $validation_result Contains the validation result, the Form Object, and the failed validation page number.
+	 * @param string $context           The context for the current submission. Possible values: form-submit, api-submit, api-validate.
 	 *
 	 * @return array $validation_result
 	 */
-	public function maybe_validate( $validation_result ) {
+	public function maybe_validate( $validation_result, $context = 'api-submit' ) {
+		if ( $context === 'api-validate' || ! $validation_result['is_valid'] ) {
+			return $validation_result;
+		}
 
 		$form            = $validation_result['form'];
 		$is_last_page    = GFFormDisplay::is_last_page( $form );
-		$failed_honeypot = false;
-
-		if ( $is_last_page && rgar( $form, 'enableHoneypot' ) ) {
-			$honeypot_id     = GFFormDisplay::get_max_field_id( $form ) + 1;
-			$failed_honeypot = ! rgempty( "input_{$honeypot_id}" );
-		}
 
 		// Validation called by partial entries feature via the heartbeat API.
 		$is_heartbeat = rgpost('action') == 'heartbeat';
 
-		if ( ! $validation_result['is_valid'] || ! $is_last_page || $failed_honeypot || $is_heartbeat ) {
+		if ( ! $is_last_page || $is_heartbeat ) {
 			return $validation_result;
 		}
 
@@ -587,19 +586,19 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			return $validation_result;
 		}
 
-		$form  = $validation_result['form'];
-		$entry = GFFormsModel::create_lead( $form );
-		$feed  = $this->get_payment_feed( $entry, $form );
-
-		if ( ! $feed ) {
-			return $validation_result;
-		}
-
 		global $gf_payment_gateway;
 
 		if ( $gf_payment_gateway && $gf_payment_gateway !== $this->get_slug() ) {
 			$this->log_debug( __METHOD__ . '() Aborting. Submission already processed by ' . $gf_payment_gateway );
 
+			return $validation_result;
+		}
+
+		$form  = $validation_result['form'];
+		$entry = GFFormsModel::get_current_lead( $form );
+		$feed  = $this->get_payment_feed( $entry, $form );
+
+		if ( ! $feed ) {
 			return $validation_result;
 		}
 
@@ -611,15 +610,15 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			return $validation_result;
 		}
 
+		$gf_payment_gateway       = $this->get_slug();
+		$this->is_payment_gateway = true;
+
 		if ( GFCommon::is_spam_entry( $entry, $form ) ) {
 			$this->log_debug( __METHOD__ . '() Aborting. Submission flagged as spam.' );
 
 			return $validation_result;
 		}
 
-		$gf_payment_gateway = $this->get_slug();
-
-		$this->is_payment_gateway      = true;
 		$this->current_feed            = $this->_single_submission_feed = $feed;
 		$this->current_submission_data = $submission_data;
 
@@ -921,7 +920,11 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		}
 
 		// Saving which gateway was used to process this entry.
-		gform_update_meta( $entry['id'], 'payment_gateway', $this->_slug );
+		gform_update_meta( $entry['id'], 'payment_gateway', $this->get_slug() );
+
+		if ( empty( $this->current_feed ) || empty( $this->current_submission_data ) ) {
+			return $entry;
+		}
 
 		$feed = $this->current_feed;
 
@@ -954,6 +957,13 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			$entry['payment_status']   = 'Processing';
 
 		}
+
+		$order = GF_Order_Factory::create_from_feed( $feed, $form, $entry, $this->current_submission_data, $this );
+		gform_add_meta(
+			$entry['id'],
+			'gform_order',
+			( new GF_Save_Entry_Order_Exporter( $order ) )->export()
+		);
 
 		return $entry;
 	}
@@ -1064,7 +1074,6 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 
 		// Updating subscription information.
 		if ( $subscription['is_success'] ) {
-
 			$entry = $this->start_subscription( $entry, $subscription );
 
 		} else {
@@ -1169,7 +1178,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		$submission_feed = false;
 
 		// Only occurs if entry has already been processed and feed has been stored in entry meta.
-		if ( $entry['id'] ) {
+		if ( ! empty( $entry['id'] ) ) {
 			$feeds           = $this->get_feeds_by_entry( $entry['id'] );
 			$submission_feed = empty( $feeds ) ? false : $this->get_feed( $feeds[0] );
 		} elseif ( $form ) {
@@ -1210,9 +1219,14 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			return true;
 		}
 
+		global $gf_payment_gateway;
+		if ( is_array( $gf_payment_gateway ) && $this->get_slug() === rgar( $gf_payment_gateway, $entry_id ) ) {
+			return true;
+		}
+
 		$gateway = gform_get_meta( $entry_id, 'payment_gateway' );
 
-		return $gateway == $this->_slug;
+		return $gateway == $this->get_slug();
 	}
 
 	/**
@@ -1359,7 +1373,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		$trial_amount = 0;
 		foreach ( $products['products'] as $field_id => $product ) {
 
-			$quantity      = $product['quantity'] ? $product['quantity'] : 1;
+			$quantity      = isset( $product['quantity'] ) ? (int) $product['quantity'] : 1;
 			$product_price = GFCommon::to_number( $product['price'], $entry['currency'] );
 
 			$options = array();
@@ -1479,7 +1493,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 	 * @return bool True if valid. False otherwise.
 	 */
 	public function is_callback_valid() {
-		if ( rgget( 'callback' ) != $this->_slug ) {
+		if ( rgget( 'callback' ) != $this->get_slug() ) {
 			return false;
 		}
 
@@ -1516,7 +1530,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 
 		// Returns either false or an array of data about the callback request which payment add-on will then use
 		// to generically process the callback data
-		$this->log_debug( __METHOD__ . '(): Initializing callback processing for: ' . $this->_slug );
+		$this->log_debug( __METHOD__ . '(): Initializing callback processing for: ' . $this->get_slug() );
 
 		$callback_action = $this->callback();
 
@@ -1742,7 +1756,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		global $wpdb;
 
 		$wpdb->insert( "{$wpdb->prefix}gf_addon_payment_callback", array(
-			'addon_slug'   => $this->_slug,
+			'addon_slug'   => $this->get_slug(),
 			'callback_id'  => $callback_id,
 			'lead_id'      => $entry_id,
 			'date_created' => gmdate( 'Y-m-d H:i:s' )
@@ -1767,7 +1781,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 	public function is_duplicate_callback( $callback_id ) {
 		global $wpdb;
 
-		$sql = $wpdb->prepare( "SELECT id FROM {$wpdb->prefix}gf_addon_payment_callback WHERE addon_slug=%s AND callback_id=%s", $this->_slug, $callback_id );
+		$sql = $wpdb->prepare( "SELECT id FROM {$wpdb->prefix}gf_addon_payment_callback WHERE addon_slug=%s AND callback_id=%s", $this->get_slug(), $callback_id );
 		if ( $wpdb->get_var( $sql ) ) {
 			return true;
 		}
@@ -2303,7 +2317,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 	// -------- Cron --------------------
 	public function setup_cron() {
 		// Setting up cron
-		$cron_name = "{$this->_slug}_cron";
+		$cron_name = "{$this->get_slug()}_cron";
 
 		add_action( $cron_name, array( $this, 'check_status' ) );
 
@@ -3150,7 +3164,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			esc_html__( 'Feb', 'gravityforms' ),
 			esc_html__( 'Mar', 'gravityforms' ),
 			esc_html__( 'Apr', 'gravityforms' ),
-			esc_html__( 'May', 'gravityforms' ),
+			esc_html_x( 'May', 'Abbreviated month name', 'gravityforms' ),
 			esc_html__( 'Jun', 'gravityforms' ),
 			esc_html__( 'Jul', 'gravityforms' ),
 			esc_html__( 'Aug', 'gravityforms' ),
@@ -3268,7 +3282,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 	public function results_filter_ui( $filter_ui, $form_id, $page_title, $gf_page, $gf_view ) {
 
 		// Don't use this filter if we aren't on the results page for this add-on
-		if ( $gf_view !== "gf_results_{$this->_slug}" ) {
+		if ( $gf_view !== "gf_results_{$this->get_slug()}" ) {
 			return $filter_ui;
 		}
 
@@ -3401,18 +3415,18 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		$sql = $wpdb->prepare(
 			"DELETE FROM {$wpdb->prefix}gf_addon_payment_transaction
                                 WHERE lead_id IN
-                                   (SELECT lead_id FROM {$entry_meta_table_name} WHERE meta_key='payment_gateway' AND meta_value=%s)", $this->_slug
+                                   (SELECT lead_id FROM {$entry_meta_table_name} WHERE meta_key='payment_gateway' AND meta_value=%s)", $this->get_slug()
 		);
 		$wpdb->query( $sql );
 
 		if ( $this->_supports_callbacks ) {
 			// deleting callback log
-			$sql = $wpdb->prepare( "DELETE FROM {$wpdb->prefix}gf_addon_payment_callback WHERE addon_slug=%s", $this->_slug );
+			$sql = $wpdb->prepare( "DELETE FROM {$wpdb->prefix}gf_addon_payment_callback WHERE addon_slug=%s", $this->get_slug() );
 			$wpdb->query( $sql );
 		}
 
 		//clear cron
-		wp_clear_scheduled_hook( $this->_slug . '_cron' );
+		wp_clear_scheduled_hook( $this->get_slug() . '_cron' );
 
 		parent::uninstall();
 	}
@@ -3432,7 +3446,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 					'subscriptionError'         => __( 'The subscription could not be canceled. Please try again later.', 'gravityforms' )
 				),
 				'enqueue' => array(
-					array( 'admin_page' => array( 'form_settings' ), 'tab' => $this->_slug ),
+					array( 'admin_page' => array( 'form_settings' ), 'tab' => $this->get_slug() ),
 					array( 'admin_page' => array( 'entry_view' ) ),
 				)
 			),
@@ -3498,7 +3512,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			return $content;
 		}
 
-		$slug = str_replace( 'gravityforms', '', $this->_slug );
+		$slug = str_replace( 'gravityforms', '', $this->get_slug() );
 		$content .= '<input type=\'hidden\' name=\'' . $slug . '_response\' id=\'gf_' . $slug . '_response\' value=\'' . rgpost( $slug . '_response' ) . '\' />';
 
 		return $content;
@@ -3563,7 +3577,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 			'formId'        => rgar( $form, 'id' ),
 			'hasPages'      => GFCommon::has_pages( $form ),
 			'pageCount'     => GFFormDisplay::get_max_page_number( $form ),
-			'responseField' => '#gf_' . str_replace( 'gravityforms', '', $this->_slug ) . '_response'
+			'responseField' => '#gf_' . str_replace( 'gravityforms', '', $this->get_slug() ) . '_response'
 		);
 
 		/* Get needed fields. */
@@ -3736,7 +3750,7 @@ abstract class GFPaymentAddOn extends GFFeedAddOn {
 		$feed  = $this->get_payment_feed( $entry, $form );
 
 		// If user is not authorized, exit.
-		if ( $feed && $this->_slug === $feed['addon_slug'] && ! GFCommon::current_user_can_any( $this->_capabilities_settings_page ) ) {
+		if ( $feed && $this->get_slug() === $feed['addon_slug'] && ! GFCommon::current_user_can_any( $this->_capabilities_settings_page ) ) {
 			wp_send_json_error( array( 'message' => esc_html__( 'Access denied.', 'gravityforms' ) ) );
 		}
 

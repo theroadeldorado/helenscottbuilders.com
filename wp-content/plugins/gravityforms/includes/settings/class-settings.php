@@ -7,6 +7,7 @@ use GFCommon;
 use GF_Fields;
 use GFForms;
 use GFFormsModel;
+use GF_Confirmation;
 
 use WP_Error;
 
@@ -204,11 +205,11 @@ class Settings {
 		}
 
 		if ( rgar( $args, 'save_callback' ) ) {
-			$this->set_save_callback( $args['save_callback'] );
+			$this->set_save_setting_callback( $args['save_callback'] );
 		}
 
 		if ( ! rgar( $args, 'save_callback' ) && rgar( $args, 'initial_values' ) && is_string( $args['initial_values'] ) && ! is_serialized( $args['initial_values'] ) ) {
-			$this->set_save_callback( $args['initial_values'] );
+			$this->set_save_setting_callback( $args['initial_values'] );
 		}
 
 		if ( rgar( $args, 'postback_message_callback' ) ) {
@@ -569,9 +570,6 @@ class Settings {
 	}
 
 
-
-
-
 	// # RENDER METHODS ------------------------------------------------------------------------------------------------
 
 	/**
@@ -607,12 +605,16 @@ class Settings {
 
 		}
 
+		if ( rgget( 'subview' ) === 'confirmation' && rgget( 'duplicatedcid' ) ) {
+			GF_Confirmation::output_duplicate_confirmation_notice();
+		}
+
 		// Get sections.
 		$fields = $this->get_fields();
 
 		?>
 
-		<form id="gform-settings" class="gform_settings_form" action="" method="post" enctype="multipart/form-data" novalidate>
+		<form id="gform-settings" class="gform_settings_form" data-js="page-loader" action="" method="post" enctype="multipart/form-data" novalidate>
 			<?php
 
 				if ( ! empty( $this->before_fields ) && is_callable( $this->before_fields ) ) {
@@ -881,9 +883,11 @@ class Settings {
 		// Prepare hidden styling.
 		$hidden = rgar( $field, 'hidden' ) === true || rgar( $field, 'type' ) === 'hidden' ? ' style="display:none;"' : '';
 
+		$field_name = $field->name ? str_replace( array( '[', ']' ), array( '_', null ), $field->name ) : '';
+
 		printf(
 			'<div id="gform_setting_%s" class="gform-settings-field gform-settings-field__%s" %s>',
-			esc_attr( str_replace( array( '[', ']' ), array( '_', null ), $field->name ) ),
+			esc_attr( $field_name ),
 			$field->type,
 			$hidden
 		);
@@ -1446,6 +1450,10 @@ class Settings {
 	 */
 	public function has_card_layout( $section ) {
 		if ( ! rgar( $section, 'fields' ) || 1 !== count( $section['fields'] ) ) {
+			return false;
+		}
+
+		if ( ! rgars( $section['fields'], '0/type' ) ) {
 			return false;
 		}
 
@@ -2544,6 +2552,10 @@ class Settings {
 	 */
 	public function get_value( $name, $default_value = '', $values = false ) {
 
+		if ( empty( $name ) ) {
+			return '';
+		}
+
 		// Get current values.
 		if ( ! $values || ! is_array( $values ) ) {
 			$values = $this->get_current_values();
@@ -2659,10 +2671,25 @@ class Settings {
 	 * Set the save callback.
 	 *
 	 * @since 2.5
+	 * @deprecated 2.6.1
 	 *
 	 * @param string|callable $callback Option name or callable function values will be saved to.
 	 */
 	public function set_save_callback( $callback = '' ) {
+		_deprecated_function( 'set_save_callback', '2.6', 'set_save_setting_callback' );
+
+		$this->set_save_setting_callback( $callback );
+
+	}
+
+	/**
+	 * Set the save callback.
+	 *
+	 * @since 2.6.1
+	 *
+	 * @param string|callable $callback Option name or callable function values will be saved to.
+	 */
+	protected function set_save_setting_callback( $callback = '' ) {
 
 		$this->_save_callback = $callback;
 
