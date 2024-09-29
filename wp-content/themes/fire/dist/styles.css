@@ -1356,6 +1356,9 @@ a:focus-visible {
 .w-3\/4 {
   width: 75%;
 }
+.w-auto {
+  width: auto;
+}
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1792,6 +1795,9 @@ a:focus-visible {
 .p-4 {
   padding: 1rem;
 }
+.p-2 {
+  padding: 0.5rem;
+}
 .py-28 {
   padding-top: 7rem;
   padding-bottom: 7rem;
@@ -1933,6 +1939,9 @@ a:focus-visible {
 }
 .text-\[16px\] {
   font-size: 16px;
+}
+.text-\[20px\] {
+  font-size: 20px;
 }
 .font-semibold {
   font-weight: 600;
