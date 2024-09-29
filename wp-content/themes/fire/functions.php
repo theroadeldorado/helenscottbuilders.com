@@ -146,14 +146,25 @@ add_action( 'widgets_init', 'fire_widgets_init' );
  * Enqueue scripts and styles.
  */
 function fire_scripts() {
-	wp_enqueue_script( 'fire-js', get_template_directory_uri() . '/dist/scripts.js' );
-	wp_enqueue_style( 'default', get_template_directory_uri() . '/dist/styles.css' );
+  $css = get_template_directory() . '/dist/styles.css';
+  $css_updated_on = date("YmdGis", filemtime($css));
 
-  if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-    wp_enqueue_script( 'comment-reply' );
-  }
+  $js = get_template_directory() . '/dist/scripts.js';
+  $js_updated_on = date("YmdGis", filemtime($js));
+
+  wp_enqueue_style('default', get_template_directory_uri() . '/dist/styles.css', array(), $css_updated_on);
+  wp_enqueue_script('fire-js', get_template_directory_uri() . '/dist/scripts.js', array(), $js_updated_on, true);
+
+  // Localize the script with ajax_object
+  wp_localize_script(
+    'fire-js',
+    'ajax_object',
+    array(
+      'ajax_url' => admin_url('admin-ajax.php')
+    )
+  );
 }
-add_action( 'wp_enqueue_scripts', 'fire_scripts' );
+add_action('wp_enqueue_scripts', 'fire_scripts');
 
 foreach (glob(get_template_directory() . "/inc/*.php") as $filename){
   include $filename;

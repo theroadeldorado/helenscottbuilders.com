@@ -22,6 +22,7 @@
 <?php $section->start(); ?>
   <div class="container px-4 mx-auto" x-data="virtualTours">
     <div class="text-center">
+      <h2 class="mb-4 text-xl font-bold lg:text-2xl font-heading">Select A Virtual Tour</h2>
       <select x-model="selectedProject" @change="updateUrl" class="p-2 w-auto text-[20px] mb-4 border rounded">
         <option value="">Select a project</option>
         <?php
